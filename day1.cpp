@@ -6,12 +6,10 @@
 #include <unordered_set>
 
 void part1() {
-    int freq = 0;
-    std::fstream inFile("day1inp.txt");
-    int in;
-    while(inFile >> in) {
-        freq += in;
-    }
+    //funny hack
+    int freq = 
+        #include "day1inp.txt"
+    ;
     std::cout << freq << '\n';
 }
 
@@ -25,7 +23,7 @@ void part2() {
         changes.push_back(in);
     }
     std::unordered_set<int> newFreqs;
-    newFreqs.reserve(1024 * 64); //reverse the heck out of my memory
+    newFreqs.reserve(1024 * 256); //reverse the heck out of my memory
 
     while (true) {
         for (auto c : changes) {
@@ -40,6 +38,7 @@ void part2() {
 }
 
 int main() {
+    part1();
     part2();
 }
 
