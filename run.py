@@ -1,4 +1,5 @@
 from subprocess import call
+import time
 import sys
 
 if __name__ == "__main__":
@@ -7,4 +8,4 @@ if __name__ == "__main__":
     else:
         fName = "day" + sys.argv[1] + ".cpp"
         call(["g++", "-Ofast", fName, "-o", "exe"])
-        call(["time", "./exe"])
+        call(["./exe"])
