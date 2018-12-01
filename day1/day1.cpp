@@ -4,7 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <unordered_set>
-#include <chrono>
+#include "../Benchmark.h"
 
 void part1() {
     //funny hack
@@ -39,12 +39,9 @@ void part2() {
 }
 
 int main() {
-    auto begin = std::chrono::high_resolution_clock::now();
-    part1();
-    part2();
-    auto end = std::chrono::high_resolution_clock::now();
-    auto time = end - begin;
-    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(time);
-    std::cout << "Time: " << ms.count() << "ms\n";
+    benchmark(100, [&]() {
+        part1();
+        part2();
+    });
 }
 
