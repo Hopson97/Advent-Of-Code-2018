@@ -4,18 +4,19 @@
 #include <fstream>
 #include <vector>
 #include <unordered_set>
+#include <chrono>
 
 void part1() {
     //funny hack
     int freq = 
-        #include "day1inp.txt"
+        #include "input.txt"
     ;
     std::cout << freq << '\n';
 }
 
 void part2() {
     int freq = 0;
-    std::fstream inFile("day1inp.txt");
+    std::fstream inFile("input.txt");
     std::vector<int> changes;
     changes.reserve(1024);
     int in;
@@ -38,7 +39,12 @@ void part2() {
 }
 
 int main() {
+    auto begin = std::chrono::high_resolution_clock::now();
     part1();
     part2();
+    auto end = std::chrono::high_resolution_clock::now();
+    auto time = end - begin;
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(time);
+    std::cout << "Time: " << ms.count() << "ms\n";
 }
 
