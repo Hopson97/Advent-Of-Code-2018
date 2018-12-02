@@ -41,7 +41,6 @@ void partTwo() {
     lines.reserve(256);
     [&]{
     while (std::getline(inFile, line)) {
-        lines.push_back(line);
         for (const auto& word : lines) {
             int difference = 0;
             for (size_t k = 0; k < line.length(); k++) {
@@ -57,17 +56,18 @@ void partTwo() {
                 return;
             }
         }
+        lines.push_back(line);
     }}();
 }
 
 int main() {
     std::vector<Benchmark<100>> benchmarks = {
-      //  {"Part 1", &partOne},
+        {"Part 1", &partOne},
         {"Part 2", &partTwo},
-      /*  {"Part 1 + Part 2", []{
+        {"Part 1 + Part 2", []{
             partOne(); 
             partTwo();
-        }}*/
+        }}
     };
 
     for (auto& bm : benchmarks) {

@@ -6,3 +6,7 @@ other/
 
 *.o 
 *.hi
+
+#Day 2
+biginput.txt
+huge_input.txt
