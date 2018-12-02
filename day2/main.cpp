@@ -3,9 +3,11 @@
 #include <unordered_map>
 #include "../Benchmark.h"
 
+const char* FILE_NAME = "biginput.txt";
+
 void partOne() {
     std::unordered_map<char, int> charCount;
-    std::ifstream inFile("input.txt");
+    std::ifstream inFile(FILE_NAME);
     std::string line;
     int twice = 0;
     int thrice = 0;
@@ -31,10 +33,11 @@ void partOne() {
 }
 
 void partTwo() {
-    std::ifstream inFile("input.txt");
+    std::ifstream inFile(FILE_NAME);
     std::string line;
     std::vector<std::string> lines;
     std::string output;
+    output.reserve(32);
     lines.reserve(256);
     [&]{
     while (std::getline(inFile, line)) {
@@ -58,15 +61,16 @@ void partTwo() {
 }
 
 int main() {
-    Benchmark<100> p1bm("Part 1", &partOne);
-    Benchmark<100> p2bm("Part 2", &partTwo);
+    std::vector<Benchmark<100>> benchmarks = {
+      //  {"Part 1", &partOne},
+        {"Part 2", &partTwo},
+      /*  {"Part 1 + Part 2", []{
+            partOne(); 
+            partTwo();
+        }}*/
+    };
 
-    
-    Benchmark<100> bbm("Part 1 + Part 2", []{
-        partOne(); 
-        partTwo();
-    });
-    p1bm.outputTimes();
-    p2bm.outputTimes();
-    bbm.outputTimes();
+    for (auto& bm : benchmarks) {
+        bm.outputTimes();
+    }
 }
