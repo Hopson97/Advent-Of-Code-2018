@@ -11,13 +11,13 @@ using Clock = std::chrono::high_resolution_clock;
 using MS    = std::chrono::microseconds;
 using N     = std::int64_t;
 
-template <typename F>
-void benchmark(N repeats, F function) {
+template <typename F, typename... Args>
+void benchmark(N repeats, F function, Args... args) {
     N total = 0;
     std::vector<N> times(repeats);
     for (int i = 0; i < repeats; i++) {
         auto begin = Clock::now();
-        function();
+        function(std::forward<Args>(args)...);
         auto end = Clock::now();
         auto time = end - begin;
         auto ms = std::chrono::duration_cast<MS>(time);
