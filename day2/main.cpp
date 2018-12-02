@@ -57,7 +57,6 @@ void partTwo() {
             }
         }
     }}();
-    std::cout << "\n" << lines[indexA] << "\n" << lines[indexB] << "\n";
     std::string output;
     for (size_t i = 0; i < length; i++) {
         if (lines[indexA][i] == lines[indexB][i]) {
