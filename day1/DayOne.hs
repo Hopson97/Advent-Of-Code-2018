@@ -10,4 +10,5 @@ part1 n (x:xs) = part1 (n + (removeExpression x)) (xs)
 main :: IO() 
 main = do 
     content <- readFile "input.txt" 
-    print $ part1 (0) (lines content)
+    let xs = (lines content)
+    print $ part1 0 xs
