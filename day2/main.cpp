@@ -43,20 +43,21 @@ void partTwo() {
     int indexA = 0;
     int indexB = 0;
     [&]{
-    for (size_t oi = 0; oi < lineCount; oi++) {
-        for (size_t ii = 0; ii < lineCount; ii++) {
-            if (ii == oi) continue;
+    for (size_t i = 0; i < lineCount; i++) {
+        for (size_t j = 0; j < lineCount; j++) {
+            if (i == j) continue;
             int diff = 0;
-            for (size_t i = 0; i < length; i++) {
-                diff += (lines[oi][i] != lines[ii][i]);
+            for (size_t k = 0; k < length; k++) {
+                diff += (lines[i][k] != lines[j][k]);
             }
             if (diff == 1) {
-                indexA = oi;
-                indexB = ii; 
+                indexA = i;
+                indexB = j; 
                 return;
             }
         }
     }}();
+    std::cout << "\n" << lines[indexA] << "\n" << lines[indexB] << "\n";
     std::string output;
     for (size_t i = 0; i < length; i++) {
         if (lines[indexA][i] == lines[indexB][i]) {
