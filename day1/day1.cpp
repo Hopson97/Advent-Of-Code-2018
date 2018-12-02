@@ -6,7 +6,7 @@
 #include <unordered_set>
 #include "../Benchmark.h"
 
-void part1() {
+void partOne() {
     //funny hack
     int freq = 
         #include "input.txt"
@@ -14,7 +14,7 @@ void part1() {
     std::cout << freq << '\n';
 }
 
-void part2() {
+void partTwo() {
     int freq = 0;
     std::fstream inFile("input.txt");
     std::vector<int> changes;
@@ -39,9 +39,14 @@ void part2() {
 }
 
 int main() {
-    benchmark(100, [&]() {
-        part1();
-        part2();
+    Benchmark<100> p1bm("Part 1", &partOne);
+    Benchmark<100> p2bm("Part 2", &partTwo);
+    Benchmark<100> bbm("Part 1 + Part 2", []{
+        partOne(); 
+        partTwo();
     });
+    p1bm.outputTimes();
+    p2bm.outputTimes();
+    bbm .outputTimes();
 }
 
