@@ -14,15 +14,13 @@ class Benchmark {
     using MS    = std::chrono::microseconds;
     using Type  = std::int64_t;
     public:
-        Benchmark(const char* name)
-        :m_name(name) 
-        { }
-
         template <typename F, typename... Args>
-        void benchmark(F function, Args... args) {
+        Benchmark(const char* name, F function, Args... args)
+        :m_name(name) 
+        { 
             Type total = 0;
-            std::array<Type, N> times(repeats);
-            for (int i = 0; i < repeats; i++) {
+            std::array<Type, N> times;
+            for (int i = 0; i < N; i++) {
                 auto begin = Clock::now();
                 function(std::forward<Args>(args)...);
                 auto end = Clock::now();
@@ -32,7 +30,7 @@ class Benchmark {
                 times[i] = ms.count();
             }
             m_totalTime = total / 1000.0;
-            m_avgTime   = (float(total) / float(repeats)) / 1000.0;
+            m_avgTime   = (float(total) / float(N)) / 1000.0;
             m_minTime   = (*std::min_element(times.cbegin(), times.cend())) / 1000.0;
             m_maxTime   = (*std::max_element(times.cbegin(), times.cend())) / 1000.0;
         }
@@ -40,7 +38,7 @@ class Benchmark {
         void outputTimes() {
             std::cout << "\n==================================\n";
             std::cout << "Results for benchmark: "  << m_name       << '\n';
-            std::cout << "Times benchmarked: "      << repeats      << "\n\n";
+            std::cout << "Times benchmarked: "      << N      << "\n\n";
             std::cout << "  Total time: "           << m_totalTime  << "ms\n";
             std::cout << "Average time: "           << m_avgTime    << "ms\n";
             std::cout << "Minimum time: "           << m_minTime    << "ms\n";
@@ -52,4 +50,4 @@ class Benchmark {
         double m_avgTime;
         double m_minTime;
         double m_maxTime;
-}
+};
