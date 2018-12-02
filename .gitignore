@@ -1,4 +1,8 @@
 exe
+hexe
 *.s
 .vscode
 other/
+
+*.o 
+*.hi
