@@ -28,9 +28,9 @@ void benchmark(N repeats, F function) {
     double avgTime   = (float(total) / float(repeats)) / 1000.0;
     double minTime   = (*std::min_element(times.cbegin(), times.cend())) / 1000.0;
     double maxTime   = (*std::max_element(times.cbegin(), times.cend())) / 1000.0;
-    std::cout << "Times repeated:   " << repeats << '\n';
-    std::cout << "Total time:       " << totalTime << "ms\n";
-    std::cout << "Average time:     " << avgTime << "ms\n";
-    std::cout << "Minimum time:     " << minTime << "ms\n";
-    std::cout << "Maximum time:     " << maxTime << "ms\n";
+    std::cout << "\nTimes benchmarked: " << repeats       << '\n';
+    std::cout << "       Total time: " << totalTime     << "ms\n";
+    std::cout << "     Average time: " << avgTime       << "ms\n";
+    std::cout << "     Minimum time: " << minTime       << "ms\n";
+    std::cout << "     Maximum time: " << maxTime       << "ms\n";
 }
