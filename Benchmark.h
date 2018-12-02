@@ -11,21 +11,21 @@
 template<int N>
 class Benchmark {
     using Clock = std::chrono::high_resolution_clock;
-    using MS    = std::chrono::microseconds;
-    using Type  = std::int64_t;
+    using TimeUnit    = std::chrono::microseconds;
+    using UnitType  = std::int64_t;
     public:
         template <typename F, typename... Args>
         Benchmark(const char* name, F function, Args... args)
         :m_name(name) 
         { 
-            Type total = 0;
-            std::array<Type, N> times;
+            UnitType total = 0;
+            std::array<UnitType, N> times;
             for (int i = 0; i < N; i++) {
                 auto begin = Clock::now();
                 function(std::forward<Args>(args)...);
                 auto end = Clock::now();
                 auto time = end - begin;
-                auto ms = std::chrono::duration_cast<MS>(time);
+                auto ms = std::chrono::duration_cast<TimeUnit>(time);
                 total += ms.count();
                 times[i] = ms.count();
             }
