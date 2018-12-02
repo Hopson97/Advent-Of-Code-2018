@@ -69,6 +69,6 @@ void partTwo() {
 int main() {
     benchmark(100, []{
         partOne();
-        part2();
+        partTwo();
     });
 }
