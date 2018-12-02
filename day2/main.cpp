@@ -34,46 +34,39 @@ void partTwo() {
     std::ifstream inFile("input.txt");
     std::string line;
     std::vector<std::string> lines;
+    std::string output;
     lines.reserve(256);
+    [&]{
     while (std::getline(inFile, line)) {
         lines.push_back(line);
-    }
-    const auto length    = line.length();
-    const auto lineCount = lines.size();
-    int indexA = 0;
-    int indexB = 0;
-    [&]{
-    for (size_t i = 0; i < lineCount; i++) {
-        for (size_t j = 0; j < lineCount; j++) {
-            if (i == j) continue;
-            int diff = 0;
-            for (size_t k = 0; k < length; k++) {
-                diff += (lines[i][k] != lines[j][k]);
+        for (const auto& word : lines) {
+            int difference = 0;
+            for (size_t k = 0; k < line.length(); k++) {
+                difference += (word[k] != line[k]);
             }
-            if (diff == 1) {
-                indexA = i;
-                indexB = j; 
+            if (difference == 1) {
+                for (size_t j = 0; j < line.length(); j++) {
+                    if (word[j] == line[j]) {
+                        output.push_back(word[j]);
+                    }
+                }
+                std::cout << output << '\n';
                 return;
             }
         }
     }}();
-    std::string output;
-    for (size_t i = 0; i < length; i++) {
-        if (lines[indexA][i] == lines[indexB][i]) {
-            output.push_back(lines[indexA][i]);
-        }
-    }
-    std::cout << output << '\n';
 }
 
 int main() {
     Benchmark<100> p1bm("Part 1", &partOne);
     Benchmark<100> p2bm("Part 2", &partTwo);
+
+    
     Benchmark<100> bbm("Part 1 + Part 2", []{
         partOne(); 
         partTwo();
     });
     p1bm.outputTimes();
     p2bm.outputTimes();
-    bbm .outputTimes();
+    bbm.outputTimes();
 }

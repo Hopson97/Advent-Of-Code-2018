@@ -1,2 +1,2 @@
 all:
-		g++ -Ofast -Wall -Wextra main.cpp -o exe
+		g++ -O3 -Wall -Wextra main.cpp -o exe
