@@ -38,8 +38,8 @@ void partTwo() {
     while (std::getline(inFile, line)) {
         lines.push_back(line);
     }
-    const auto length    = 26;//line.length();
-    const auto lineCount = 250;//lines.size();
+    const auto length    = line.length();
+    const auto lineCount = lines.size();
     int indexA = 0;
     int indexB = 0;
     [&]{
