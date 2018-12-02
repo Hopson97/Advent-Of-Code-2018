@@ -30,7 +30,7 @@ void partOne() {
     std::cout << twice * thrice << '\n';
 }
 
-void part2() {
+void partTwo() {
     std::ifstream inFile("input.txt");
     std::string line;
     std::vector<std::string> lines;
@@ -67,7 +67,6 @@ void part2() {
 }
 
 int main() {
-    
     benchmark(100, []{
         partOne();
         part2();
