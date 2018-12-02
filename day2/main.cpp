@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <unordered_map>
+#include "../Benchmark.h"
 
 void partOne() {
     std::unordered_map<char, int> charCount;
@@ -30,5 +31,8 @@ void partOne() {
 }
 
 int main() {
-    partOne();
+    benchmark(100, []{
+        partOne();
+    });
+    //partOne();
 }
