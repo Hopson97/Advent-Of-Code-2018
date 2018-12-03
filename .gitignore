@@ -6,6 +6,7 @@ other/
 
 *.o 
 *.hi
+*.out
 
 #Day 2
 biginput.txt
