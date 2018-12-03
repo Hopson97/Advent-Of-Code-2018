@@ -24,15 +24,17 @@ int Claim::id = 1;
 Claim parseLine(const char* line, int id) {
    // std::cout << "Begin parseline for id: " << id << '\n';
     const char* data = line + 5 + (int)std::log10(id);
-    size_t comma, colonSpaceEnd, xloc;
-    for (int i = 0; i < strlen(data); i++) {
+    size_t  comma = 0, 
+            colonSpaceEnd = 0, 
+            xloc = 0;
+    for (size_t i = 0; i < strlen(data); i++) {
         char x = data[i];
         switch (x) {
             case ',':
                 comma = i;
                 break;
             case ':':
-                colonSpaceEnd = i + 1;
+                colonSpaceEnd = i;
                 break;
             case 'x':
                 xloc = i;
@@ -43,7 +45,7 @@ Claim parseLine(const char* line, int id) {
     }
     std::string_view xs(data,                       comma);
     std::string_view ys(data + comma + 1,           colonSpaceEnd - comma - 2);
-    std::string_view hs(data + colonSpaceEnd + 1,   xloc - colonSpaceEnd - 1);
+    std::string_view hs(data + colonSpaceEnd + 2,   xloc - colonSpaceEnd);
     std::string_view ws(data + xloc + 1,            strlen(data) - xloc);
     return {
         std::stoi(xs.data()),
