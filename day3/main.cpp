@@ -18,7 +18,6 @@ struct Claim {
     int x, y, width, height, claimId;
     static int id;
 };
-
 int Claim::id = 1;
 
 Claim parseLine(const char* line, int id) {
@@ -65,11 +64,8 @@ void day3() {
     std::ifstream inFile ("input.txt");
     std::string line;
     std::vector<Claim> claims;
-    int id = 0;
     while (std::getline(inFile, line)) {
-        id++;
-        auto& claim = claims.emplace_back(parseLine(line.c_str(), id));
-        //if (id >= 5) return;
+        auto& claim = claims.emplace_back(parseLine(line.c_str(), Claim::id));
         for (int y = claim.y; y < claim.y + claim.height; y++) {
             for (int x = claim.x; x < claim.x + claim.width; x++) {
                 size_t idx = y * size + x;
