@@ -43,6 +43,7 @@ class Benchmark {
             std::cout << "Average time: "           << m_avgTime    << "ms\n";
             std::cout << "Minimum time: "           << m_minTime    << "ms\n";
             std::cout << "Maximum time: "           << m_maxTime    << "ms\n";
+            std::cout << "       Range: "           << m_maxTime - m_minTime << "ms\n";
             std::cout << "==================================\n";
         }
     private:
