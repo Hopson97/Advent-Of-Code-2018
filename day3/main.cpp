@@ -96,8 +96,10 @@ void day3() {
         }
     }
 
-    std::cout << countOverlaps(grid) << '\n';
-    std::cout << findNonoverlapId(grid, claims) << '\n';
+    auto overlaps = countOverlaps(grid);
+    auto nonoverlapid = findNonoverlapId(grid, claims);
+
+    std::printf("%d %d", overlaps, nonoverlapid);
 }
 
 
