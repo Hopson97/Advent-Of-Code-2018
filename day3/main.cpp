@@ -5,7 +5,7 @@
 #include "../Benchmark.h"
 
 struct Claim {
-    Claim(int x, int y, int w, int h) 
+    Claim(uint16_t x, uint16_t y, uint8_t w, uint8_t h) 
     :   x(x)
     ,   y(y)
     ,   width(w)
@@ -13,37 +13,31 @@ struct Claim {
     {
         claimId = id++;
     }
-    int x, y, width, height, claimId;
-    static int id;
+    uint16_t x, y, claimId;
+    uint8_t width, height;
+    static uint16_t id;
 };
-int Claim::id = 1;
+uint16_t Claim::id = 1;
 
 Claim parseLine(const char* line, int id) {
-    const char* data = line + 5 + (int)std::log10(id);
-    size_t  comma = 0, 
-            colonSpaceEnd = 0, 
-            xloc = 0,
-            length = std::strlen(data);
+    const char* data = line + 5 + (int)std::log10(id); 
+    size_t  locationComma   = 0, 
+            locationColon   = 0, 
+            locationX       = 0,
+            length          = std::strlen(data);
     for (size_t i = 0; i < length; i++) {
         char x = data[i];
         switch (x) {
-            case ',':
-                comma = i;
-                break;
-            case ':':
-                colonSpaceEnd = i;
-                break;
-            case 'x':
-                xloc = i;
-                break;
-            default:
-                break;
+            case ',': locationComma = i; break;
+            case ':': locationColon = i; break;
+            case 'x': locationX = i; break;
+            default : break;
         }
     }
-    std::string_view xs(data,                       comma);
-    std::string_view ys(data + comma + 1,           colonSpaceEnd - comma - 2);
-    std::string_view hs(data + colonSpaceEnd + 2,   xloc - colonSpaceEnd);
-    std::string_view ws(data + xloc + 1,            length - xloc);
+    std::string_view xs(data,                       locationComma);
+    std::string_view ys(data + locationComma + 1,   locationColon - locationComma - 2);
+    std::string_view hs(data + locationColon + 2,   locationX - locationColon);
+    std::string_view ws(data + locationX + 1,       length - locationX);
     return {
         std::stoi(xs.data()),
         std::stoi(ys.data()),
@@ -52,12 +46,10 @@ Claim parseLine(const char* line, int id) {
     };
 }
 
-
-
-const int size = 1000;
+constexpr unsigned ARR_SIZE = 1000;
 void day3() {
     Claim::id = 1;
-    std::array<int, size * size> grid;
+    std::array<uint16_t, ARR_SIZE * ARR_SIZE> grid;
     grid.fill(0);
     std::ifstream inFile ("input.txt");
     std::string line;
@@ -66,8 +58,7 @@ void day3() {
         auto& claim = claims.emplace_back(parseLine(line.c_str(), Claim::id));
         for (int y = claim.y; y < claim.y + claim.height; y++) {
             for (int x = claim.x; x < claim.x + claim.width; x++) {
-                size_t idx = y * size + x;
-                grid[idx]++;
+                grid[y * ARR_SIZE + x]++;
             }
         }
     }
@@ -85,7 +76,7 @@ void day3() {
         [&]{
             for (int y = claim.y; y < claim.y + claim.height; y++) {
                 for (int x = claim.x; x < claim.x + claim.width; x++) {
-                    if (grid[y * size + x] != 1) {
+                    if (grid[y * ARR_SIZE + x] != 1) {
                         return;
                     }
                 }
@@ -99,8 +90,8 @@ void day3() {
 
 
 int main() {
-    std::vector<Benchmark<10000>> benchmarks = {
-        {"Part 1", &day3},
+    std::vector<Benchmark<1000>> benchmarks = {
+        {"Day 3", &day3},
     };
 
     for (auto& bm : benchmarks) {
