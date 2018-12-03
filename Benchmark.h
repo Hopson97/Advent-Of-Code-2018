@@ -39,7 +39,7 @@ class Benchmark {
             std::cout << "\n==================================\n";
             std::cout << "Results for benchmark: "  << m_name       << '\n';
             std::cout << "Times benchmarked: "      << N      << "\n\n";
-            std::cout << "  Total time: "           << m_totalTime  << "ms\n";
+           // std::cout << "  Total time: "           << m_totalTime  << "ms\n";
             std::cout << "Average time: "           << m_avgTime    << "ms\n";
             std::cout << "Minimum time: "           << m_minTime    << "ms\n";
             std::cout << "Maximum time: "           << m_maxTime    << "ms\n";
