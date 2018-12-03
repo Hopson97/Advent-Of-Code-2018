@@ -4,6 +4,9 @@
 #include <cmath>
 #include "../Benchmark.h"
 
+constexpr unsigned ARR_SIZE = 1000;
+using Grid = std::array<uint16_t, ARR_SIZE * ARR_SIZE>;
+
 struct Claim {
     Claim(uint16_t x, uint16_t y, uint8_t w, uint8_t h) 
     :   x(x)
@@ -39,17 +42,47 @@ Claim parseLine(const char* line, int id) {
     std::string_view hs(data + locationColon + 2,   locationX - locationColon);
     std::string_view ws(data + locationX + 1,       length - locationX);
     return {
-        std::stoi(xs.data()),
-        std::stoi(ys.data()),
-        std::stoi(hs.data()),
-        std::stoi(ws.data()),
+        std::stoul(xs.data()),
+        std::stoul(ys.data()),
+        std::stoul(hs.data()),
+        std::stoul(ws.data()),
     };
 }
 
-constexpr unsigned ARR_SIZE = 1000;
+int countOverlaps(const Grid& grid) {
+    int count = 0;
+    for (auto square : grid) {
+        if (square > 1) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int findNonoverlapId(const Grid& grid, const std::vector<Claim>& claims) {
+    bool found = false;
+    int id = 0;
+    for (auto& claim : claims) {
+        [&]{
+            for (int y = claim.y; y < claim.y + claim.height; y++) {
+                for (int x = claim.x; x < claim.x + claim.width; x++) {
+                    if (grid[y * ARR_SIZE + x] != 1) {
+                        return;
+                    }
+                }
+            }
+            id = claim.claimId;
+            found = true;
+        }();
+        if (found) return id;
+    }
+    return -1;
+}
+
+
 void day3() {
     Claim::id = 1;
-    std::array<uint16_t, ARR_SIZE * ARR_SIZE> grid;
+    Grid grid;
     grid.fill(0);
     std::ifstream inFile ("input.txt");
     std::string line;
@@ -63,29 +96,8 @@ void day3() {
         }
     }
 
-    int count = 0;
-    for (auto square : grid) {
-        if (square > 1) {
-            count++;
-        }
-    }
-    std::cout << count << '\n';
-
-    bool found = false;
-    for (auto& claim : claims) {
-        [&]{
-            for (int y = claim.y; y < claim.y + claim.height; y++) {
-                for (int x = claim.x; x < claim.x + claim.width; x++) {
-                    if (grid[y * ARR_SIZE + x] != 1) {
-                        return;
-                    }
-                }
-            }
-            std::cout << "ID: " << claim.claimId << '\n';
-            found = true;
-        }();
-    }
-    if (found) return;
+    std::cout << countOverlaps(grid) << '\n';
+    std::cout << findNonoverlapId(grid, claims) << '\n';
 }
 
 
