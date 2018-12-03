@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 
 template<int N>
@@ -20,6 +21,7 @@ class Benchmark {
         { 
             UnitType total = 0;
             std::array<UnitType, N> times;
+
             for (int i = 0; i < N; i++) {
                 auto begin = Clock::now();
                 function(std::forward<Args>(args)...);
@@ -29,27 +31,39 @@ class Benchmark {
                 total += ms.count();
                 times[i] = ms.count();
             }
-            m_totalTime = total / 1000.0;
-            m_avgTime   = (float(total) / float(N)) / 1000.0;
-            m_minTime   = (*std::min_element(times.cbegin(), times.cend())) / 1000.0;
-            m_maxTime   = (*std::max_element(times.cbegin(), times.cend())) / 1000.0;
+            m_totalTime = total;
+            m_avgTime   = (float(total) / float(N));
+            m_minTime   = (*std::min_element(times.cbegin(), times.cend()));
+            m_maxTime   = (*std::max_element(times.cbegin(), times.cend()));
+            standardDeviation(times);
         }
+
 
         void outputTimes() {
             std::cout << "\n==================================\n";
             std::cout << "Results for benchmark: "  << m_name       << '\n';
             std::cout << "Times benchmarked: "      << N      << "\n\n";
            // std::cout << "  Total time: "           << m_totalTime  << "ms\n";
-            std::cout << "Average time: "           << m_avgTime    << "ms\n";
-            std::cout << "Minimum time: "           << m_minTime    << "ms\n";
-            std::cout << "Maximum time: "           << m_maxTime    << "ms\n";
-            std::cout << "       Range: "           << m_maxTime - m_minTime << "ms\n";
+            std::cout << "Average time: "           << m_avgTime / 1000.0    << "ms\n";
+            std::cout << "Minimum time: "           << m_minTime / 1000.0   << "ms\n";
+            std::cout << "Maximum time: "           << m_maxTime / 1000.0   << "ms\n";
+            std::cout << "       Range: "           << (m_maxTime - m_minTime) / 1000.0 << "ms\n";
+            std::cout << "Standard Deviation time: " << m_standardDeviation / 1000.0 << "ms\n";
             std::cout << "==================================\n";
         }
     private:
+        void standardDeviation(const std::array<UnitType, N>& times) {
+            double sum = 0;
+            for (auto n : times) {
+                sum += std::pow((n - m_avgTime), 2);
+            }
+            m_standardDeviation = std::sqrt(sum / (double)N) * (1 / ((double)N - 1));
+        }
+
         const char* m_name;
         double m_totalTime;
         double m_avgTime;
         double m_minTime;
         double m_maxTime;
+        double m_standardDeviation;
 };
