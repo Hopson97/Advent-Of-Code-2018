@@ -35,7 +35,6 @@ class Benchmark {
             m_avgTime   = (float(total) / float(N));
             m_minTime   = (*std::min_element(times.cbegin(), times.cend()));
             m_maxTime   = (*std::max_element(times.cbegin(), times.cend()));
-            standardDeviation(times);
         }
 
 
@@ -48,22 +47,13 @@ class Benchmark {
             std::cout << "Minimum time: "           << m_minTime / 1000.0   << "ms\n";
             std::cout << "Maximum time: "           << m_maxTime / 1000.0   << "ms\n";
             std::cout << "       Range: "           << (m_maxTime - m_minTime) / 1000.0 << "ms\n";
-            std::cout << "Standard Deviation time: " << m_standardDeviation / 1000.0 << "ms\n";
             std::cout << "==================================\n";
         }
     private:
-        void standardDeviation(const std::array<UnitType, N>& times) {
-            double sum = 0;
-            for (auto n : times) {
-                sum += std::pow((n - m_avgTime), 2);
-            }
-            m_standardDeviation = std::sqrt(sum / (double)N) / ((double)N - 1);
-        }
 
         const char* m_name;
         double m_totalTime;
         double m_avgTime;
         double m_minTime;
         double m_maxTime;
-        double m_standardDeviation;
 };

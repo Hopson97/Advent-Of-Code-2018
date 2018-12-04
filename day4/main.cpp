@@ -14,7 +14,7 @@ struct Date {
 };
 
 //mmddhhmm
-uint64_t toInteger(const Date& date) {
+uint64_t dateToInt(const Date& date) {
     return 
         (date.month << 24) | 
         (date.day   << 16) | 
@@ -30,7 +30,7 @@ struct DateAction {
         const Date& a = left.date;
         const Date& b = right.date;
 
-        return toInteger(a) < toInteger(b);
+        return dateToInt(a) < dateToInt(b);
     }
     //Action action;
 };
@@ -140,5 +140,5 @@ void partOne() {
 }
 
 int main() {
-    Benchmark<1000>("Part 1", &partOne).outputTimes();
+    Benchmark<1000>("Day 4", &partOne).outputTimes();
 }
