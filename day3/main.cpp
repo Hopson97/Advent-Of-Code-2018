@@ -79,7 +79,6 @@ int findNonoverlapId(const Grid& grid, const std::vector<Claim>& claims) {
     return -1;
 }
 
-
 void day3() {
     Claim::id = 1;
     Grid grid;
@@ -104,11 +103,5 @@ void day3() {
 
 
 int main() {
-    std::vector<Benchmark<1000>> benchmarks = {
-        {"Day 3", &day3},
-    };
-
-    for (auto& bm : benchmarks) {
-        bm.outputTimes();
-    }
+    Benchmark<1000>("Day 3", &day3).outputTimes();
 }

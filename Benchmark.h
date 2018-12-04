@@ -57,7 +57,7 @@ class Benchmark {
             for (auto n : times) {
                 sum += std::pow((n - m_avgTime), 2);
             }
-            m_standardDeviation = std::sqrt(sum / (double)N) * (1 / ((double)N - 1));
+            m_standardDeviation = std::sqrt(sum / (double)N) / ((double)N - 1);
         }
 
         const char* m_name;
