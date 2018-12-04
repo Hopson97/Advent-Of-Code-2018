@@ -108,10 +108,21 @@ void partOne() {
     }
 
     //Find guard with longest sleep
-    uint16_t laziest = guards.begin()->first;
+    uint16_t frequentSleeper = guards.begin()->first;
+    uint16_t laziest = frequentSleeper;
+    int hour = 0;
+    int amount = 0;
     for (auto& g : guards) {
         if (g.second.total > guards[laziest].total) {
             laziest = g.first;
+        }
+        const auto& h = g.second.hours;
+        for (int i = 0; i < h.size(); i++) {
+            if (h[i] > amount) {
+                amount = h[i];
+                hour = i;
+                frequentSleeper = g.first;
+            }
         }
     }
 
@@ -125,21 +136,9 @@ void partOne() {
         }
     }
 
-    std::cout << (int)laziest * idx;
-}
-
-void partTwo() {
-    
+    std::cout << (int)laziest * idx << " " << (int)frequentSleeper * hour << " ";
 }
 
 int main() {
-    Benchmark<1> p1bm("Part 1", &partOne);
-   /* Benchmark<100> p2bm("Part 2", &partTwo);
-    Benchmark<100> bbm("Part 1 + Part 2", []{
-        partOne(); 
-        partTwo();
-    });*/
-    p1bm.outputTimes();
-  //  p2bm.outputTimes();
-//    bbm .outputTimes();
+    Benchmark<1000>("Part 1", &partOne).outputTimes();
 }
