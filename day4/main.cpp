@@ -13,15 +13,7 @@ struct Date {
     uint8_t month, day, hour, minute;
 };
 
-//mmddhhmm
-uint64_t dateToInt(const Date& date) {
-    return 
-        (date.month << 24) | 
-        (date.day   << 16) | 
-        (date.hour  << 8)  | 
-         date.minute;
-}
-
+uint64_t dateToInt(const Date& date);
 struct DateAction {
     Date date;
     std::string action;
@@ -32,11 +24,21 @@ struct DateAction {
 
         return dateToInt(a) < dateToInt(b);
     }
-    //Action action;
 };
 
+struct SleepShedule {
+    int total = 0;
+    std::array<uint16_t, 59> hours;
+};
+
+//Used for sorting the date and that
+uint64_t dateToInt(const Date& date) {
+    return 
+        (date.month << 24) | (date.day   << 16) | 
+        (date.hour  << 8)  | (date.minute);
+}
+
 Date parseDate(const char* line) {
-  //  std::string_view yr (line, 4);
     std::string_view mn (line + 5, 2);
     std::string_view dy (line + 8, 2);
     std::string_view hr (line + 11, 2);
@@ -62,11 +64,6 @@ uint16_t extractGuardNumber(const std::string& action) {
     return std::atoi(guardNumber.data());
 }
 
-struct Sleep {
-    int total = 0;
-    std::array<int, 59> hours;
-};
-
 void partOne() {
     std::vector<DateAction> dateActions;
     dateActions.reserve(1500);
@@ -78,14 +75,15 @@ void partOne() {
     std::sort(dateActions.begin(), dateActions.end());
 
     uint16_t lastGuard = 0; 
-    std::unordered_map<uint16_t, Sleep> guards;
+    std::unordered_map<uint16_t, SleepShedule> guards;
+    guards.reserve(50);
     int sleepMin = 0;
     for (const auto& dateAction : dateActions) {
         const auto& action = dateAction.action;
         switch (action[0]) {
             case 'G':{  //Begin shift
                 lastGuard = extractGuardNumber(action);
-                guards.try_emplace(lastGuard, Sleep{});
+                guards.try_emplace(lastGuard, SleepShedule{});
                 }
                 break;
 
@@ -117,7 +115,7 @@ void partOne() {
             laziest = g.first;
         }
         const auto& h = g.second.hours;
-        for (int i = 0; i < h.size(); i++) {
+        for (size_t i = 0; i < h.size(); i++) {
             if (h[i] > amount) {
                 amount = h[i];
                 hour = i;
@@ -129,14 +127,15 @@ void partOne() {
     const auto& h = guards[laziest].hours;
     int idx = 0;
     int max = 0;
-    for (int i = 0; i < h.size(); i++) {
+    for (size_t i = 0; i < h.size(); i++) {
         if (h[i] > max) {
             max = h[i];
             idx = i;
         }
     }
 
-    std::cout << (int)laziest * idx << " " << (int)frequentSleeper * hour << " ";
+    std::cout   << (int)laziest         * idx   << " "  //Part 1    
+                << (int)frequentSleeper * hour  << " "; //Part 2
 }
 
 int main() {
