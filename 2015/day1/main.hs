@@ -25,14 +25,11 @@
     To what floor do the instructions take Santa?
 -}
 
-
-
 calculateFloor :: String -> Int -> Int
 calculateFloor [] currentFloor = currentFloor
 calculateFloor (x:xs) currentFloor
     | x == '(' = calculateFloor xs (currentFloor + 1)
     | otherwise = calculateFloor xs (currentFloor - 1)
-
 
 part1 :: IO() 
 part1 = do 
@@ -52,7 +49,7 @@ part1 = do
 
 
 findBasement :: String -> Int -> Int -> Int
-findBasement [] currentFloor index = index
+findBasement [] _ index = index
 findBasement (x:xs) currentFloor index
     | currentFloor == -1 = index
     | x == '(' = findBasement xs (currentFloor + 1) (index + 1)
