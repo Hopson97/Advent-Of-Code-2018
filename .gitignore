@@ -1,0 +1,13 @@
+exe
+hexe
+*.s
+.vscode
+other/
+
+*.o 
+*.hi
+*.out
+
+#Day 2
+biginput.txt
+huge_input.txt
