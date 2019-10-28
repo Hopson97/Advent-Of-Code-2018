@@ -2,8 +2,12 @@
 #include <array>
 
 #include "utils/benchmark.h"
+#include "2018/aoc2018.h"
 
 int main(int argc, char** argv) {
+    if (argc < 3) {
+        
+    }
     std::cout << argv[0] << " " << argv[1] << argv[2];
 }
 
