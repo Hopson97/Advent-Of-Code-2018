@@ -73,7 +73,7 @@ Link: https://adventofcode.com/YEAR\n\
 \n\
 "
 
-dirName = '2019'
+dirName = '2017'
 year = dirName
 if not os.path.exists(dirName):
     #Create dirs
