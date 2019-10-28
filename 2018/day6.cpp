@@ -1,6 +1,5 @@
 #include "aoc2018.h"
 
-
 struct Point {
     int x, y;
 };

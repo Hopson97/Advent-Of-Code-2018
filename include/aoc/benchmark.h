@@ -58,21 +58,24 @@ class Benchmark {
         double m_maxTime;
 };
 
-template<int N = 100, typename F>
-void benchmark(const char* name, F f) {
-    Benchmark<N> bm(name, f);
-    bm.outputTimes();
-}
+template<typename Day, int N = 100>
+void benchmark() {
+    Day day;
+    day.setPrint(false);
 
-template<int N = 100, typename F>
-void benchmark(const char* partOne, F partOneFunction, const char* partTwo, F partTwoFunction) {
-    Benchmark<N> partOneBenchmark(partOne, partOneFunction);
-    Benchmark<N> partTwoBenchmark(partTwo, partTwoFunction);
-    Benchmark<N> allBenchmark("All", [partOneFunction, partTwoFunction]{
-        partOneFunction(); 
-        partTwoFunction();
+    Benchmark<N> p1Benchmark("Part 1", [&day]() {
+        day.partOne();
     });
-    partOneBenchmark.outputTimes();
-    partTwoBenchmark.outputTimes();
+    Benchmark<N> p2Benchmark("Part 2", [&day]() {
+        day.partTwo();
+    });
+
+    Benchmark<N> allBenchmark("Part 1 + Part 2", [&day]{
+        day.partOne();
+        day.partTwo();
+    });
+
+    p1Benchmark.outputTimes();
+    p2Benchmark.outputTimes();
     allBenchmark .outputTimes();
 }

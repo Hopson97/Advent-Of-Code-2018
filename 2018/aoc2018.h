@@ -1,11 +1,14 @@
 #pragma once
 
 #include <aoc/util.h>
+#include <aoc/aoc.h>
 
-namespace day1 {
-    void partOne();
-    void partTwo();
-}
+class Day1 final : public AdventOfCode 
+{
+    public:
+        void partOne() override;
+        void partTwo() override;
+};
 
 namespace day2 {
     void partOne();

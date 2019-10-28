@@ -1,6 +1,5 @@
 #include "aoc2018.h"
 
-
 using Vertices = std::array<std::pair<int, std::vector<int>>, 26>;
 
 struct Graph {
