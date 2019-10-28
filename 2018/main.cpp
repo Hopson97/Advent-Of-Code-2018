@@ -1,14 +1,19 @@
+#include "aoc2018.h"
+
 #include <iostream>
 #include <array>
 
-#include "utils/benchmark.h"
-#include "2018/aoc2018.h"
+#include <benchmark.h>
+#include "aoc2018.h"
 
-int main(int argc, char** argv) {
-    if (argc < 3) {
-        
-    }
-    std::cout << argv[0] << " " << argv[1] << argv[2];
+template<typename F>
+void benchmark(const char* name, F f) {
+    Benchmark<100> bm(name, f);
+    bm.outputTimes();
+}
+
+int main() {
+    benchmark("Day One Part 1", &day1::partOne);
 }
 
 /*

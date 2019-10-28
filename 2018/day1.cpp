@@ -8,14 +8,14 @@
 #include "aoc2018.h"
 
 
-namespace aoc2018::day1 {
+namespace day1 {
     void partOne() 
     {
         //funny hack
         int freq = 
             #include "inputs/day1.txt"
         ;
-        std::cout << freq << '\n';
+        std::cout << freq << std::endl;
     }
 
     void partTwo() 
