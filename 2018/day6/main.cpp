@@ -1,27 +1,29 @@
+#include "../Benchmark.h"
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <unordered_map>
-#include <cmath>
 #include <unordered_set>
-#include "../Benchmark.h"
 
 struct Point {
     int x, y;
 };
 
-int dist(int a, int b, int c, int d) {
+int dist(int a, int b, int c, int d)
+{
     int xd = std::abs(a - c);
     int yd = std::abs(b - d);
 
-    return yd + xd;//xd - yd;
+    return yd + xd; // xd - yd;
 }
 
-void partOne() {
+void partOne()
+{
     std::ifstream inFile("example.txt");
     std::string line;
     std::vector<int> xs;
     std::vector<int> ys;
-    while(std::getline(inFile, line, ',')) {
+    while (std::getline(inFile, line, ',')) {
         int x = std::stoi(line);
         std::getline(inFile, line);
         int y = std::stoi(line);
@@ -46,7 +48,7 @@ void partOne() {
             int index = 0;
             for (int i = 0; i < distances.size(); i++) {
                 if (distances[i] < small) {
-                    
+
                     index = i;
                     small = distances[i];
                     std::cout << small << " ";
@@ -55,12 +57,13 @@ void partOne() {
             std::cout << '\n';
             bool unique = true;
             for (int i = 0; i < distances.size(); i++) {
-                if (i == index) continue;
+                if (i == index)
+                    continue;
                 if (distances[i] == small) {
-                    unique = false; 
+                    unique = false;
                     break;
                 }
-            }    
+            }
             if (unique) {
                 area[y * maxX + x] = index;
             }
@@ -75,11 +78,10 @@ void partOne() {
     }
 }
 
-void partTwo() {
-    
-}
+void partTwo() {}
 
-int main() {
+int main()
+{
     Benchmark<1> p1bm("Part 1", &partOne);
     p1bm.outputTimes();
 }

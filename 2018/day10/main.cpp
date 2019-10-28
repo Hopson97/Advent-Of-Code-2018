@@ -1,38 +1,47 @@
+#include "../Benchmark.h"
 #include <fstream>
 #include <iostream>
-#include <vector>
 #include <string_view>
-#include "../Benchmark.h"
+#include <vector>
 
 struct Point {
     int x, y, vx, vy;
 };
 
-Point parseLine(const std::string& line) {
+Point parseLine(const std::string &line)
+{
     int locca = 0;
     int loccb = 0;
     int locabl = 0;
     int locabr = 0;
     for (int i = 0; i < line.length(); i++) {
         if (line[i] == ',') {
-            if (locca != 0) loccb = i; else locca = i;
+            if (locca != 0)
+                loccb = i;
+            else
+                locca = i;
         }
-        else if (line[i] == '<')  locabr = i;
-        else if (line[i] == '>' && locabl == 0)  locabl = i;
+        else if (line[i] == '<')
+            locabr = i;
+        else if (line[i] == '>' && locabl == 0)
+            locabl = i;
     }
 
-    std::string x   = line.substr(10,           locca - 8);
-    std::string y   = line.substr(locca + 2,    locabl - locca - 2);
-    std::string vx  = line.substr(locabr + 1,   loccb - locabr - 1);
-    std::string vy  = line.substr(loccb + 2,    line.length() - loccb - 3);
+    std::string x = line.substr(10, locca - 8);
+    std::string y = line.substr(locca + 2, locabl - locca - 2);
+    std::string vx = line.substr(locabr + 1, loccb - locabr - 1);
+    std::string vy = line.substr(loccb + 2, line.length() - loccb - 3);
 
     return {
-        std::stoi(x) / 1000 + 50,   std::stoi(y)/ 1000 + 50, 
-        std::stoi(vx),  std::stoi(vy), 
+        std::stoi(x) / 1000 + 50,
+        std::stoi(y) / 1000 + 50,
+        std::stoi(vx),
+        std::stoi(vy),
     };
 }
 
-auto parseFile() {
+auto parseFile()
+{
     std::vector<Point> points;
     std::string line;
     std::fstream inFile("input.txt");
@@ -41,21 +50,24 @@ auto parseFile() {
     }
 
     for (int i = 0; i < points.size(); i++) {
-        auto& p = points[i];
-        std::cout << (i + 1) << " " << "X: " << p.x << " Y: " << p.y << " VX: " << p.vx << " VY: " << p.vy << '\n';
+        auto &p = points[i];
+        std::cout << (i + 1) << " "
+                  << "X: " << p.x << " Y: " << p.y << " VX: " << p.vx
+                  << " VY: " << p.vy << '\n';
     }
 
     return points;
 }
 
 constexpr int size = 120;
-void partOne() {
+void partOne()
+{
     auto points = parseFile();
 
     std::array<char, size * size> grid;
     while (true) {
         grid.fill('.');
-        for (auto& p : points) {
+        for (auto &p : points) {
             grid[(p.y) * size + (p.x)] = '#';
             p.x += p.vx;
             p.y += p.vy;
@@ -71,10 +83,6 @@ void partOne() {
     }
 }
 
-void partTwo() {
-    
-}
+void partTwo() {}
 
-int main() {
-    Benchmark<1>("Part 1", &partOne).outputTimes();
-}
+int main() { Benchmark<1>("Part 1", &partOne).outputTimes(); }

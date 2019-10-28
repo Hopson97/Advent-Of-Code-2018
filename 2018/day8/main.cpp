@@ -1,8 +1,8 @@
+#include "../Benchmark.h"
 #include <fstream>
 #include <iostream>
-#include <unordered_map>
 #include <memory>
-#include "../Benchmark.h"
+#include <unordered_map>
 
 struct Node {
     std::vector<Node> children;
@@ -11,7 +11,8 @@ struct Node {
 
 using NodePtr = std::unique_ptr<Node>;
 
-void parse(std::ifstream& inFile, NodePtr& root) {
+void parse(std::ifstream &inFile, NodePtr &root)
+{
     int children;
     int nMetaData;
     if (!(inFile >> children >> nMetaData)) {
@@ -19,17 +20,19 @@ void parse(std::ifstream& inFile, NodePtr& root) {
     }
     if (children == 0) {
         for (int i = 0; i < nMetaData; i++) {
-            int n; inFile >> n;
+            int n;
+            inFile >> n;
             root->metaData.push_back(n);
         }
         return;
-    } else {
-
+    }
+    else {
     }
 }
 
-void partOne() {
-    std::ifstream inFile("eg.txt"); 
+void partOne()
+{
+    std::ifstream inFile("eg.txt");
     int children;
     int nMetaData;
 
@@ -37,10 +40,6 @@ void partOne() {
     parse(inFile, root);
 }
 
-void partTwo() {
-    
-}
+void partTwo() {}
 
-int main() {
-    Benchmark<100>("Part 1", &partOne).outputTimes();
-}
+int main() { Benchmark<100>("Part 1", &partOne).outputTimes(); }

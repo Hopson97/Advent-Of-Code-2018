@@ -17,7 +17,7 @@ class Benchmark {
     public:
         template <typename F, typename... Args>
         Benchmark(const char* name, F function, Args... args)
-        :m_name(name) 
+        :   m_name(name) 
         { 
             UnitType total = 0;
             std::array<UnitType, N> times;
@@ -42,7 +42,7 @@ class Benchmark {
             std::cout << "\n==================================\n";
             std::cout << "Results for benchmark: "  << m_name       << '\n';
             std::cout << "Times benchmarked: "      << N      << "\n\n";
-           // std::cout << "  Total time: "           << m_totalTime  << "ms\n";
+            std::cout << "  Total time: "           << m_totalTime  << "ms\n";
             std::cout << "Average time: "           << m_avgTime / 1000.0    << "ms\n";
             std::cout << "Minimum time: "           << m_minTime / 1000.0   << "ms\n";
             std::cout << "Maximum time: "           << m_maxTime / 1000.0   << "ms\n";
@@ -57,3 +57,22 @@ class Benchmark {
         double m_minTime;
         double m_maxTime;
 };
+
+template<typename F>
+void benchmark(const char* name, F f) {
+    Benchmark<100> bm(name, f);
+    bm.outputTimes();
+}
+
+template<typename F>
+void benchmark(const char* partOne, F partOneFunction, const char* partTwo, F partTwoFunction) {
+    Benchmark<100> partOneBenchmark(partOne, partOneFunction);
+    Benchmark<100> partTwoBenchmark(partTwo, partTwoFunction);
+    Benchmark<100> allBenchmark("All", [partOneFunction, partTwoFunction]{
+        partOneFunction(); 
+        partTwoFunction();
+    });
+    partOneBenchmark.outputTimes();
+    partTwoBenchmark.outputTimes();
+    allBenchmark .outputTimes();
+}
