@@ -1,0 +1,8 @@
+#include <aoc/benchmark.h>
+#include "aocYEAR.h"
+
+int main()
+{
+    aocYEAR::day1PartOne();
+    aocYEAR::day1PartTwo();
+}

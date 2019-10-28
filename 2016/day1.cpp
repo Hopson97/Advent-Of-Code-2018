@@ -1,6 +1,9 @@
 #include "aoc2016.h"
 
-// https://adventofcode.com/2016/day/1
+/*
+    Solution for Advent of Code 2016 day 1
+    https://adventofcode.com/2016/day/1
+*/
 
 namespace {
     const char *INPUT_PATH = "2016/inputs/day1.txt";
@@ -67,35 +70,34 @@ namespace {
     }
 } // namespace
 
-void Day1::partOne()
-{
-    // Lazy solution, could have used a set but meh
-    std::vector<Vector2> visited;
+namespace aoc2016 {
+    void day1PartOne(bool doPrint)
+    {
+        // Lazy solution, could have used a set but meh
+        std::vector<Vector2> visited;
 
-    int dir = 0;
-    Vector2 position;
-    std::ifstream inFile(INPUT_PATH);
-    std::string line;
-    while (std::getline(inFile, line, ',')) {
-        Step step = getStep(line);
+        int dir = 0;
+        Vector2 position;
+        std::ifstream inFile(INPUT_PATH);
+        std::string line;
+        while (std::getline(inFile, line, ',')) {
+            Step step = getStep(line);
 
-        if (step.direction == 'L')
-            dir--;
-        else
-            dir++;
+            if (step.direction == 'L')
+                dir--;
+            else
+                dir++;
 
-        if (dir == -1)
-            dir = 3;
-        if (dir == 4)
-            dir = 0;
+            if (dir == -1)
+                dir = 3;
+            if (dir == 4)
+                dir = 0;
 
-        doSteps(step, position, dir, visited);
+            doSteps(step, position, dir, visited);
+        }
+
+        output(doPrint, 2016, 1, 1, "None");
     }
-    output(1, abs(position.x) + abs(position.y));
-}
 
-void Day1::partTwo()
-{
-    std::ifstream inFile(INPUT_PATH);
-    output(2, 0);
-}
+    void day1PartTwo(bool doPrint) { (void)doPrint; }
+} // namespace aoc2016

@@ -1,19 +1,24 @@
 #include "aoc2016.h"
 
-// https://adventofcode.com/2016/day/4
+/*
+    Solution for Advent of Code 2016 day 4
+    https://adventofcode.com/2016/day/4
+*/
 
 namespace {
     const char *INPUT_PATH = "2016/inputs/day4.txt";
 } // namespace
 
-void Day4::partOne()
-{
-    std::ifstream inFile(INPUT_PATH);
-    output(1, 0);
-}
+namespace aoc2016 {
+    void day4PartOne(bool doPrint)
+    {
+        std::ifstream inFile(INPUT_PATH);
+        output(doPrint, 2016, 4, 1, "None");
+    }
 
-void Day4::partTwo()
-{
-    std::ifstream inFile(INPUT_PATH);
-    output(1, 0);
-}
+    void day4PartTwo(bool doPrint)
+    {
+        std::ifstream inFile(INPUT_PATH);
+        output(doPrint, 2016, 4, 2, "None");
+    }
+} // namespace aoc2016
