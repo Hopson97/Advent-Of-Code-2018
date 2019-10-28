@@ -4,69 +4,64 @@
 
 namespace {
     const char *INPUT_PATH = "2016/inputs/day1.txt";
+
+    struct Vector2 {
+        int x = 0;
+        int y = 0;
+    };
+
+    struct Step {
+        char direction;
+        int amount;
+    };
 } // namespace
 
 void Day1::partOne()
 {
     int dir = 0;
-    int x = 0;
-    int y = 0;
+    Vector2 position;
     std::ifstream inFile(INPUT_PATH);
     std::string line;
     while (std::getline(inFile, line, ',')) {
+        Step step = line[0] == ' ' ? Step{line[1], line[2] - '0'}
+                                   : Step{line[0], line[1] - '0'};
 
-        char turn = line[0];
-        int amount = line[1] - '0';
-        if (line[0] == ' ') {
-            turn = line[1];
-            amount = line[2] - '0';
-        }
+        if (step.direction == 'L') 
+            dir--;
+        else 
+            dir++;
+        
+        if (dir == -1) dir = 3;
+        if (dir == 4) dir = 0;
 
-        // std::cout << turn << " " << amount << '\n';
 
-        switch (turn) {
-            case 'L':
-                dir--;
-                break;
-            case 'R':
-                dir++;
-
-            default:
-                break;
-        }
-
-        if (dir == -1)
-            dir = 3;
-        if (dir == 4)
-            dir = 0;
 
         switch (dir) {
             case 0:
-                y += amount;
+                position.y += step.amount;
                 break;
 
             case 1:
-                x += amount;
+                position.x += step.amount;
                 break;
 
             case 2:
-                y -= amount;
+                position.y -= step.amount;
                 break;
 
             case 3:
-                x -= amount;
+                position.x -= step.amount;
                 break;
 
             default:
                 std::cout << "NO" << std::endl;
                 break;
         }
-    }
-    y = abs(y);
-    x = abs(x);
-    std::cout << "X Y D " << x << " " << y << " " << dir << '\n';
 
-    output(1, x + y);
+        std::cout << "Step " << step.direction << " " << step.amount << '\n';
+        std::cout << "X: " << position.x << " Y: " << position.y << std::endl << std::endl;
+    }
+    output(1, abs(position.x) + abs(position.y));
 }
 
 void Day1::partTwo()
