@@ -10,64 +10,86 @@ namespace {
         int y = 0;
     };
 
+    bool operator==(const Vector2 &left, const Vector2 &right)
+    {
+        return (left.x == right.x) && (left.y == right.y);
+    }
+
     struct Step {
         char direction;
         int amount;
     };
 
-    Step getStep(std::string line) 
+    Step getStep(std::string line)
     {
         int start = line[0] == ' ' ? 1 : 0;
         Step step;
         step.direction = line[start];
-        std::string_view view()
+        std::string view(&line[start + 1]);
+        step.amount = std::stoi(view);
+
+        return step;
+    }
+
+    void doSteps(Step step, Vector2 &position, int &dir,
+                 std::vector<Vector2> &visited)
+    {
+        while (step.amount--) {
+            switch (dir) {
+                case 0:
+                    position.y++;
+                    break;
+
+                case 1:
+                    position.x++;
+                    break;
+
+                case 2:
+                    position.y--;
+                    break;
+
+                case 3:
+                    position.x--;
+                    break;
+
+                default:
+                    std::cout << "NO" << std::endl;
+                    break;
+            }
+            for (const auto &pos : visited) {
+                if (pos == position) {
+                    std::cout << "Day 1 part 2 "
+                              << abs(position.x) + abs(position.y) << std::endl;
+                }
+            }
+            visited.push_back(position);
+        }
     }
 } // namespace
 
 void Day1::partOne()
 {
+    // Lazy solution, could have used a set but meh
+    std::vector<Vector2> visited;
+
     int dir = 0;
     Vector2 position;
     std::ifstream inFile(INPUT_PATH);
     std::string line;
     while (std::getline(inFile, line, ',')) {
-        Step step = line[0] == ' ' ? Step{line[1], line[2] - '0'}
-                                   : Step{line[0], line[1] - '0'};
+        Step step = getStep(line);
 
-        if (step.direction == 'L') 
+        if (step.direction == 'L')
             dir--;
-        else 
+        else
             dir++;
-        
-        if (dir == -1) dir = 3;
-        if (dir == 4) dir = 0;
 
+        if (dir == -1)
+            dir = 3;
+        if (dir == 4)
+            dir = 0;
 
-
-        switch (dir) {
-            case 0:
-                position.y += step.amount;
-                break;
-
-            case 1:
-                position.x += step.amount;
-                break;
-
-            case 2:
-                position.y -= step.amount;
-                break;
-
-            case 3:
-                position.x -= step.amount;
-                break;
-
-            default:
-                std::cout << "NO" << std::endl;
-                break;
-        }
-
-        std::cout << "Step " << step.direction << " " << step.amount << '\n';
-        std::cout << "X: " << position.x << " Y: " << position.y << std::endl << std::endl;
+        doSteps(step, position, dir, visited);
     }
     output(1, abs(position.x) + abs(position.y));
 }
@@ -75,5 +97,5 @@ void Day1::partOne()
 void Day1::partTwo()
 {
     std::ifstream inFile(INPUT_PATH);
-    output(1, 0);
+    output(2, 0);
 }
