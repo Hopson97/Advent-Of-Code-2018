@@ -24,7 +24,7 @@ namespace {
 
     struct SleepShedule {
         int total = 0;
-        std::array<uint16_t, 59> hours;
+        std::array<u16, 59> hours;
     };
 
     // Used for sorting the date and that
@@ -54,7 +54,7 @@ namespace {
         return DateAction{date, line};
     }
 
-    uint16_t extractGuardNumber(const std::string &action)
+    u16 extractGuardNumber(const std::string &action)
     {
         auto end = action.find('b');
 
@@ -76,8 +76,8 @@ void Day4::partOne()
     }
     std::sort(dateActions.begin(), dateActions.end());
 
-    uint16_t lastGuard = 0;
-    std::unordered_map<uint16_t, SleepShedule> guards;
+    u16 lastGuard = 0;
+    std::unordered_map<u16, SleepShedule> guards;
     guards.reserve(50);
     int sleepMin = 0;
     for (const auto &dateAction : dateActions) {
@@ -107,8 +107,8 @@ void Day4::partOne()
     }
 
     // Find guard with longest sleep
-    uint16_t frequentSleeper = guards.begin()->first;
-    uint16_t laziest = frequentSleeper;
+    u16 frequentSleeper = guards.begin()->first;
+    u16 laziest = frequentSleeper;
     int hour = 0;
     int amount = 0;
     for (auto &g : guards) {
