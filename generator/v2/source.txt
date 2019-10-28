@@ -1,0 +1,24 @@
+#include "aocYEAR.h"
+
+/*
+    Solution for Advent of Code YEAR day DAY
+    https://adventofcode.com/YEAR/day/DAY
+*/
+
+namespace {
+    const char* INPUT_PATH = "YEAR/inputs/dayDAY.txt";
+} // namespace
+
+namespace aocYEAR {
+    void dayDAYPartOne()
+    {
+        std::ifstream inFile(INPUT_PATH);
+        output(YEAR, DAY, 1, 0);
+    }
+
+    void dayDAYPartTwo()
+    {
+        std::ifstream inFile(INPUT_PATH);
+        output(YEAR, DAY, 2, 0);
+    }
+} // aocYEAR
