@@ -1,8 +1,4 @@
-#include "../Benchmark.h"
-#include <fstream>
-#include <iostream>
-#include <string_view>
-#include <vector>
+#include "aoc2018.h"
 
 struct Point {
     int x, y, vx, vy;
@@ -84,5 +80,3 @@ void partOne()
 }
 
 void partTwo() {}
-
-int main() { Benchmark<1>("Part 1", &partOne).outputTimes(); }

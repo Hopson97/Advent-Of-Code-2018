@@ -1,9 +1,5 @@
-#include "../Benchmark.h"
-#include <fstream>
-#include <iostream>
-#include <list>
-#include <set>
-#include <vector>
+#include "aoc2018.h"
+
 
 using Vertices = std::array<std::pair<int, std::vector<int>>, 26>;
 
@@ -60,5 +56,3 @@ void partOne()
 }
 
 void partTwo() {}
-
-int main() { Benchmark<1>("Part 1", &partOne).outputTimes(); }

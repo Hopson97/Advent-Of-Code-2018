@@ -1,9 +1,5 @@
-#include "../Benchmark.h"
-#include <cmath>
-#include <fstream>
-#include <iostream>
-#include <unordered_map>
-#include <unordered_set>
+#include "aoc2018.h"
+
 
 struct Point {
     int x, y;
@@ -79,9 +75,3 @@ void partOne()
 }
 
 void partTwo() {}
-
-int main()
-{
-    Benchmark<1> p1bm("Part 1", &partOne);
-    p1bm.outputTimes();
-}
