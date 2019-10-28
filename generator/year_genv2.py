@@ -15,7 +15,7 @@ implementationTemplate = getContent("v2/source.txt")
 cmakeTemplate = getContent("cmake.txt")
 readmeTemplate = getContent("readme.txt")
 
-dirName = '2016'
+dirName = '2018'
 year = dirName
 if not os.path.exists(dirName):
     #Create dirs

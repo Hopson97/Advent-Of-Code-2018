@@ -1,39 +1,66 @@
 #pragma once
+
 #include <aoc/aoc.h>
 #include <aoc/util.h>
 
-class Day1 final : public AdventOfCode<1, 2018> {
-  public:
-    void partOne() override;
-    void partTwo() override;
-};
+namespace aoc2018 {
+    void day1PartOne(bool outputResults = true);
+    void day1PartTwo(bool outputResults = true);
 
-class Day2 final : public AdventOfCode<2, 2018> {
-  public:
-    void partOne() override;
-    void partTwo() override;
-};
+    void day2PartOne(bool outputResults = true);
+    void day2PartTwo(bool outputResults = true);
 
-class Day3 final : public AdventOfCode<3, 2018> {
-  public:
-    void partOne() override;
-    void partTwo() override;
-};
+    void day3PartOne(bool outputResults = true);
+    void day3PartTwo(bool outputResults = true);
 
-class Day4 final : public AdventOfCode<4, 2018> {
-  public:
-    void partOne() override;
-    void partTwo() override;
-};
+    void day4PartOne(bool outputResults = true);
+    void day4PartTwo(bool outputResults = true);
 
-class Day5 final : public AdventOfCode<5, 2018> {
-  public:
-    void partOne() override;
-    void partTwo() override;
-};
+    void day5PartOne(bool outputResults = true);
+    void day5PartTwo(bool outputResults = true);
 
-class Day6 final : public AdventOfCode<6, 2018> {
-  public:
-    void partOne() override;
-    void partTwo() override;
-};
+    void day6PartOne(bool outputResults = true);
+    void day6PartTwo(bool outputResults = true);
+
+    void day7PartOne(bool outputResults = true);
+    void day7PartTwo(bool outputResults = true);
+
+    void day8PartOne(bool outputResults = true);
+    void day8PartTwo(bool outputResults = true);
+
+    void day9PartOne(bool outputResults = true);
+    void day9PartTwo(bool outputResults = true);
+
+    void day10PartOne(bool outputResults = true);
+    void day10PartTwo(bool outputResults = true);
+
+    void day11PartOne(bool outputResults = true);
+    void day11PartTwo(bool outputResults = true);
+
+    void day12PartOne(bool outputResults = true);
+    void day12PartTwo(bool outputResults = true);
+
+    void day13PartOne(bool outputResults = true);
+    void day13PartTwo(bool outputResults = true);
+
+    void day14PartOne(bool outputResults = true);
+    void day14PartTwo(bool outputResults = true);
+
+    void day15PartOne(bool outputResults = true);
+    void day15PartTwo(bool outputResults = true);
+
+    void day16PartOne(bool outputResults = true);
+    void day16PartTwo(bool outputResults = true);
+
+    void day17PartOne(bool outputResults = true);
+    void day17PartTwo(bool outputResults = true);
+
+    void day18PartOne(bool outputResults = true);
+    void day18PartTwo(bool outputResults = true);
+
+    void day19PartOne(bool outputResults = true);
+    void day19PartTwo(bool outputResults = true);
+
+    void day20PartOne(bool outputResults = true);
+    void day20PartTwo(bool outputResults = true);
+} // namespace aoc2018

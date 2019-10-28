@@ -1,57 +1,24 @@
 #include "aoc2018.h"
 
-using Vertices = std::array<std::pair<int, std::vector<int>>, 26>;
+/*
+    Solution for Advent of Code 2018 day 7
+    https://adventofcode.com/2018/day/7
+*/
 
-struct Graph {
-    std::set<int> startPoints;
-    Vertices vertices;
-};
+namespace {
+    const char *INPUT_PATH = "2018/inputs/day7.txt";
+} // namespace
 
-Graph readFile()
-{
-    std::ifstream inFile("input.txt");
-    std::string line;
-    Vertices vertices;
-    std::set<int> beginFinder;
-    for (size_t i = 0; i < 26; i++) {
-        vertices[i].first = i;
-        beginFinder.insert(i);
+namespace aoc2018 {
+    void day7PartOne(bool doPrint)
+    {
+        std::ifstream inFile(INPUT_PATH);
+        output(doPrint, 2018, 7, 1, "None");
     }
 
-    while (std::getline(inFile, line)) {
-        int begin = line[5] - 'A';
-        int end = line[36] - 'A';
-
-        vertices[begin].second.push_back(end);
-        if (beginFinder.find(end) != beginFinder.end()) {
-            beginFinder.erase(end);
-        }
+    void day7PartTwo(bool doPrint)
+    {
+        std::ifstream inFile(INPUT_PATH);
+        output(doPrint, 2018, 7, 2, "None");
     }
-    for (auto &edge : vertices) {
-        std::sort(edge.second.begin(), edge.second.end());
-    }
-
-    return {beginFinder, vertices};
-}
-
-void partOne()
-{
-    auto graph = readFile();
-    std::string result;
-    result.reserve(32);
-    auto current = graph.startPoints.begin();
-    std::list<int> queue;
-    std::array<bool, 26> visited;
-    visited.fill(false);
-
-    queue.push_back(*graph.startPoints.begin());
-    for (auto &v : graph.vertices) {
-        std::cout << v.first << " -> ";
-        for (auto vert : v.second) {
-            std::cout << vert << " ";
-        }
-        std::cout << '\n';
-    }
-}
-
-void partTwo() {}
+} // namespace aoc2018

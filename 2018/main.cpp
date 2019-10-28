@@ -3,8 +3,6 @@
 
 int main()
 {
-    benchmark<Day1>();
-    benchmark<Day2>();
-    benchmark<Day3>();
-    benchmark<Day4>();
+    aoc2018::day1PartOne();
+    aoc2018::day1PartTwo();
 }
