@@ -42,5 +42,4 @@ find_package(Threads)
 #Finally
 target_link_libraries(${PROJECT_NAME} 
     Threads::Threads 
-    ${SFML_LIBRARIES} 
 )
