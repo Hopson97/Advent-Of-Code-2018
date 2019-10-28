@@ -20,7 +20,7 @@ namespace day1 {
     void partTwo()
     {
         int freq = 0;
-        std::fstream inFile("inputs/day1.txt");
+        std::fstream inFile("2018/inputs/day1.txt");
         std::vector<int> changes;
         changes.reserve(1024);
         int in;

@@ -95,7 +95,7 @@ namespace day3 {
         Claim::id = 1;
         Grid grid;
         grid.fill(0);
-        std::ifstream inFile("inputs/day3_big.txt");
+        std::ifstream inFile("2018/inputs/day3.txt");
         std::string line;
         std::vector<Claim> claims;
         while (std::getline(inFile, line)) {

@@ -19,3 +19,8 @@ namespace day3 {
 namespace day4 {
     void partOne();
 }
+
+namespace day5 {
+    void partOne();
+    void partTwo();
+}

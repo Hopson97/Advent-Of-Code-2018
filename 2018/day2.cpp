@@ -4,7 +4,7 @@
 #include <vector>
 
 namespace {
-    const char *FILE_NAME = "inputs/day2.txt";
+    const char *FILE_NAME = "2018/inputs/day2.txt";
 }
 
 namespace day2 {

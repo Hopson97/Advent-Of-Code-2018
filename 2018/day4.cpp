@@ -71,7 +71,7 @@ namespace day4 {
     {
         std::vector<DateAction> dateActions;
         dateActions.reserve(1500);
-        std::ifstream inFile("inputs/day4.txt");
+        std::ifstream inFile("2018/inputs/day4.txt");
         std::string line;
         while (std::getline(inFile, line)) {
             dateActions.push_back(parseLine(line.c_str()));
