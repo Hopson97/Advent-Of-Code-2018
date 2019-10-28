@@ -96,7 +96,7 @@ namespace aoc2016 {
             doSteps(step, position, dir, visited);
         }
 
-        output(doPrint, 2016, 1, 1, "None");
+        aoc::output(doPrint, 2016, 1, 1, "None");
     }
 
     void day1PartTwo(bool doPrint) { (void)doPrint; }

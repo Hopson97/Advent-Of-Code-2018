@@ -13,12 +13,12 @@ namespace aoc2018 {
     void day8PartOne(bool doPrint)
     {
         std::ifstream inFile(INPUT_PATH);
-        output(doPrint, 2018, 8, 1, "None");
+        aoc::output(doPrint, 2018, 8, 1, "None");
     }
 
     void day8PartTwo(bool doPrint)
     {
         std::ifstream inFile(INPUT_PATH);
-        output(doPrint, 2018, 8, 2, "None");
+        aoc::output(doPrint, 2018, 8, 2, "None");
     }
 } // namespace aoc2018

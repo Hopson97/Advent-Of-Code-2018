@@ -13,12 +13,12 @@ namespace aocYEAR {
     void dayDAYPartOne(bool doPrint)
     {
         std::ifstream inFile(INPUT_PATH);
-        output(doPrint, YEAR, DAY, 1, "None");
+        aoc::output(doPrint, YEAR, DAY, 1, "None");
     }
 
     void dayDAYPartTwo(bool doPrint)
     {
         std::ifstream inFile(INPUT_PATH);
-        output(doPrint, YEAR, DAY, 2, "None");
+        aoc::output(doPrint, YEAR, DAY, 2, "None");
     }
 } // aocYEAR

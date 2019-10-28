@@ -16,7 +16,7 @@ namespace aoc2018 {
         int freq =
 #include "inputs/day1.txt"
             ;
-        output(doPrint, 2018, 1, 1, freq);
+        aoc::output(doPrint, 2018, 1, 1, freq);
     }
 
     void day1PartTwo(bool doPrint)
@@ -36,7 +36,7 @@ namespace aoc2018 {
             for (auto c : changes) {
                 freq += c;
                 if (newFreqs.find(freq) != newFreqs.end()) {
-                    output(doPrint, 2018, 1, 2, freq);
+                    aoc::output(doPrint, 2018, 1, 2, freq);
                     return;
                 }
                 newFreqs.insert(freq);
