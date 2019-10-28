@@ -1,3 +1,3 @@
 
-    void dayDAYPartOne();
-    void dayDAYPartTwo();
+    void dayDAYPartOne(bool outputResults = true);
+    void dayDAYPartTwo(bool outputResults = true);

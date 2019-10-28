@@ -3,5 +3,6 @@
 
 int main()
 {
-    
+    aocYEAR::day1PartOne();
+    aocYEAR::day1PartTwo();
 }

@@ -10,15 +10,15 @@ namespace {
 } // namespace
 
 namespace aocYEAR {
-    void dayDAYPartOne()
+    void dayDAYPartOne(bool doPrint)
     {
         std::ifstream inFile(INPUT_PATH);
-        output(YEAR, DAY, 1, 0);
+        output(doPrint, YEAR, DAY, 1, "None");
     }
 
-    void dayDAYPartTwo()
+    void dayDAYPartTwo(bool doPrint)
     {
         std::ifstream inFile(INPUT_PATH);
-        output(YEAR, DAY, 2, 0);
+        output(doPrint, YEAR, DAY, 2, "None");
     }
 } // aocYEAR
