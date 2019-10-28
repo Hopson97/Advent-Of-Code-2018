@@ -1,9 +1,9 @@
 #include "aoc2015.h"
 
-//https://adventofcode.com/2015/day/19
+// https://adventofcode.com/2015/day/19
 
 namespace {
-    const char* INPUT_PATH = "2015/inputs/day19.txt";
+    const char *INPUT_PATH = "2015/inputs/day19.txt";
 } // namespace
 
 void Day19::partOne()

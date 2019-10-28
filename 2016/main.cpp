@@ -1,9 +1,10 @@
 
-#include <aoc/benchmark.h>
 #include "aoc2016.h"
+#include <aoc/benchmark.h>
 
-template<typename Day>
-void run() {
+template <typename Day>
+void run()
+{
     Day day;
     day.partOne();
     day.partTwo();
@@ -12,5 +13,5 @@ void run() {
 int main()
 {
     run<Day1>();
-    //benchmark<Day1>();
+    // benchmark<Day1>();
 }

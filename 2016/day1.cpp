@@ -1,9 +1,9 @@
 #include "aoc2016.h"
 
-//https://adventofcode.com/2016/day/1
+// https://adventofcode.com/2016/day/1
 
 namespace {
-    const char* INPUT_PATH = "2016/inputs/day1.txt";
+    const char *INPUT_PATH = "2016/inputs/day1.txt";
 } // namespace
 
 void Day1::partOne()
@@ -14,7 +14,7 @@ void Day1::partOne()
     std::ifstream inFile(INPUT_PATH);
     std::string line;
     while (std::getline(inFile, line, ',')) {
-        
+
         char turn = line[0];
         int amount = line[1] - '0';
         if (line[0] == ' ') {
@@ -22,47 +22,45 @@ void Day1::partOne()
             amount = line[2] - '0';
         }
 
-        //std::cout << turn << " " << amount << '\n';
+        // std::cout << turn << " " << amount << '\n';
 
-        switch (turn)
-        {
-        case 'L':
-            dir--;
-            break;
-        case 'R':
-            dir++;
+        switch (turn) {
+            case 'L':
+                dir--;
+                break;
+            case 'R':
+                dir++;
 
-        default:
-            break;
+            default:
+                break;
         }
 
-        if (dir == -1) dir = 3;
-        if (dir == 4) dir = 0;
+        if (dir == -1)
+            dir = 3;
+        if (dir == 4)
+            dir = 0;
 
-        switch (dir)
-        {
-        case 0:
-            y += amount;
-            break;
-        
-        case 1:
-            x += amount;
-            break;
+        switch (dir) {
+            case 0:
+                y += amount;
+                break;
 
-        case 2:
-            y -= amount;
-            break;
+            case 1:
+                x += amount;
+                break;
 
-        case 3:
-            x -= amount;
-            break;
-        
-        default:
-            std::cout << "NO" << std::endl;
-            break;
+            case 2:
+                y -= amount;
+                break;
+
+            case 3:
+                x -= amount;
+                break;
+
+            default:
+                std::cout << "NO" << std::endl;
+                break;
         }
-
-        
     }
     y = abs(y);
     x = abs(x);
