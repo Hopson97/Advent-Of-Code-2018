@@ -1,19 +1,15 @@
 #pragma once
 
+template<int Year, int Day>
 class AdventOfCode
 {
     public:
-        AdventOfCode(int year = -1, int day = -1)
-        :   m_year  (year)
-        ,   m_day   (day)
-        {}
-
         void setPrint(bool doesPrint) {
             m_printResults = doesPrint;
         }
 
         void title() {
-            std::cout << m_year << " Day " << m_day << std::endl;
+            std::cout << Year << " Day " << Day << std::endl;
         }
 
         virtual void partOne() = 0;
@@ -23,13 +19,11 @@ class AdventOfCode
         template <typename Out>
         void output(int part, Out out) {
             if (m_printResults) {
-                std::cout << "Result for " << m_year << " Day " << m_day << " Part" << part << std::endl;
+                std::cout << "Result for " << Year << " Day " << Day << " Part" << part << std::endl;
                 std::cout << out << '\n' << std::endl;
             }
         }
 
     private:
         bool m_printResults = true;
-        int m_year;
-        int m_day;
 };

@@ -1,58 +1,45 @@
 #pragma once
-
 #include <aoc/util.h>
 #include <aoc/aoc.h>
 
-class Day1 final : public AdventOfCode 
+class Day1 final : public AdventOfCode<1, 2018>
 {
-    public:
-        Day1() : AdventOfCode(2018, 1) {}
-
-        void partOne() override;
-        void partTwo() override;
+  public:
+    void partOne() override;
+    void partTwo() override;
 };
 
-class Day2 final : public AdventOfCode 
+class Day2 final : public AdventOfCode<2, 2018>
 {
-    public:
-        Day2() : AdventOfCode(2018, 2) {}
-
-        void partOne() override;
-        void partTwo() override;
+  public:
+    void partOne() override;
+    void partTwo() override;
 };
 
-class Day3 final : public AdventOfCode 
+class Day3 final : public AdventOfCode<3, 2018>
 {
-    public:
-        Day3() : AdventOfCode(2018, 3) {}
-
-        void partOne() override;
-        void partTwo() override;
+  public:
+    void partOne() override;
+    void partTwo() override;
 };
 
-class Day4 final : public AdventOfCode 
+class Day4 final : public AdventOfCode<4, 2018>
 {
-    public:
-        Day4() : AdventOfCode(2018, 4) {}
-
-        void partOne() override;
-        void partTwo() override;
+  public:
+    void partOne() override;
+    void partTwo() override;
 };
 
-class Day5 final : public AdventOfCode 
+class Day5 final : public AdventOfCode<5, 2018>
 {
-    public:
-        Day5() : AdventOfCode(2018, 5) {}
-
-        void partOne() override;
-        void partTwo() override;
+  public:
+    void partOne() override;
+    void partTwo() override;
 };
 
-class Day6 final : public AdventOfCode 
+class Day6 final : public AdventOfCode<6, 2018>
 {
-    public:
-        Day6() : AdventOfCode(2018, 6) {}
-
-        void partOne() override;
-        void partTwo() override;
+  public:
+    void partOne() override;
+    void partTwo() override;
 };
