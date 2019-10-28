@@ -14,6 +14,14 @@ namespace {
         char direction;
         int amount;
     };
+
+    Step getStep(std::string line) 
+    {
+        int start = line[0] == ' ' ? 1 : 0;
+        Step step;
+        step.direction = line[start];
+        std::string_view view()
+    }
 } // namespace
 
 void Day1::partOne()
