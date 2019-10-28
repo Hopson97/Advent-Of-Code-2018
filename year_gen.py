@@ -73,7 +73,7 @@ Link: https://adventofcode.com/YEAR\n\
 \n\
 "
 
-dirName = '2017'
+dirName = '2019'
 year = dirName
 if not os.path.exists(dirName):
     #Create dirs
@@ -94,7 +94,7 @@ if not os.path.exists(dirName):
             #Create implementation files
             with open(dirName + '/day' + str(i + 1) + ".cpp", 'w') as day:
                 day.write(IMPL.replace("DAY", str(i + 1)).replace("YEAR", year))
-                sources += "Day" + str(i + 1) + '\n'
+                sources += "\tday" + str(i + 1) + '.cpp\n'
             
             #Create input files
             with open(dirName + '/inputs/day' + str(i + 1) + ".txt", 'w') as day:
