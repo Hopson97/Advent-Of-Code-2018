@@ -2,6 +2,17 @@
 
 #include <iostream>
 
+
+
+template <typename Out>
+void output(int year, int day, int part)
+{
+#if 1
+    std::cout << "Result for " << year << " Day " << day << " Part" << part << std::endl;
+    std::cout << out << '\n' << std::endl;
+#endif
+}
+/*
 template<int Year, int Day>
 class AdventOfCode
 {
@@ -28,4 +39,4 @@ class AdventOfCode
 
     private:
         bool m_printResults = true;
-};
+};*/
