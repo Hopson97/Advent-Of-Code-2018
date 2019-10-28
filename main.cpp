@@ -1,16 +1,12 @@
-#include <fstream>
 #include <iostream>
-#include <unordered_map>
-#include "../Benchmark.h"
 
-void partOne() {
-    
+#include "utils/benchmark.h"
+
+int main(int argc, char** argv) {
+
 }
 
-void partTwo() {
-    
-}
-
+/*
 int main() {
     Benchmark<100> p1bm("Part 1", &partOne);
     Benchmark<100> p2bm("Part 2", &partTwo);
@@ -22,3 +18,4 @@ int main() {
     p2bm.outputTimes();
     bbm .outputTimes();
 }
+*/
