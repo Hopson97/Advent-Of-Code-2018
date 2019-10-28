@@ -4,49 +4,43 @@
 #include <fstream>
 #include <vector>
 #include <unordered_set>
-#include "../Benchmark.h"
 
-void partOne() {
-    //funny hack
-    int freq = 
-        #include "input.txt"
-    ;
-    std::cout << freq << '\n';
-}
+#include "aoc2018.h"
 
-void partTwo() {
-    int freq = 0;
-    std::fstream inFile("input.txt");
-    std::vector<int> changes;
-    changes.reserve(1024);
-    int in;
-    while(inFile >> in) {
-        changes.push_back(in);
+
+namespace aoc2018::day1 {
+    void partOne() 
+    {
+        //funny hack
+        int freq = 
+            #include "inputs/day1.txt"
+        ;
+        std::cout << freq << '\n';
     }
-    std::unordered_set<int> newFreqs;
-    newFreqs.reserve(1024 * 256); //reverse the heck out of my memory
 
-    while (true) {
-        for (auto c : changes) {
-            freq += c;
-            if (newFreqs.find(freq) != newFreqs.end()) {
-                std::cout << freq << '\n';
-                return;
+    void partTwo() 
+    {
+        int freq = 0;
+        std::fstream inFile("inputs/day1.txt");
+        std::vector<int> changes;
+        changes.reserve(1024);
+        int in;
+        while(inFile >> in) {
+            changes.push_back(in);
+        }
+        std::unordered_set<int> newFreqs;
+        newFreqs.reserve(1024 * 256); //reverse the heck out of my memory
+
+        while (true) {
+            for (auto c : changes) {
+                freq += c;
+                if (newFreqs.find(freq) != newFreqs.end()) {
+                    std::cout << freq << '\n';
+                    return;
+                }
+                newFreqs.insert(freq);
             }
-            newFreqs.insert(freq);
         }
     }
-}
 
-int main() {
-    Benchmark<100> p1bm("Part 1", &partOne);
-    Benchmark<100> p2bm("Part 2", &partTwo);
-    Benchmark<100> bbm("Part 1 + Part 2", []{
-        partOne(); 
-        partTwo();
-    });
-    p1bm.outputTimes();
-    p2bm.outputTimes();
-    bbm .outputTimes();
 }
-

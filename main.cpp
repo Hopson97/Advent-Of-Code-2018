@@ -1,9 +1,10 @@
 #include <iostream>
+#include <array>
 
 #include "utils/benchmark.h"
 
 int main(int argc, char** argv) {
-
+    std::cout << argv[0] << " " << argv[1] << argv[2];
 }
 
 /*
