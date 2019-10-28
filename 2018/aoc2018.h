@@ -1,5 +1,7 @@
 #pragma once
 
+#include <aoc/util.h>
+
 #include <cmath>
 #include <cstring>
 #include <fstream>
@@ -19,4 +21,9 @@ namespace day2 {
 
 namespace day3 {
     void partOne();
+}
+
+namespace day4 {
+    void partOne();
+    void partTwo();
 }

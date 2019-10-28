@@ -1,7 +1,5 @@
 #include "aoc2018.h"
 
-#include <util.h>
-
 namespace {
     constexpr unsigned ARR_SIZE = 1000;
     using Grid = std::array<u16, ARR_SIZE * ARR_SIZE>;
