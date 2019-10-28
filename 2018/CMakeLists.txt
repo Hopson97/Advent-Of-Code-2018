@@ -13,6 +13,7 @@ add_executable(${PROJECT_NAME}
     day1.cpp
     day2.cpp
     day3.cpp
+    day4.cpp
 )
 
 target_include_directories(
