@@ -47,3 +47,12 @@ class Day5 final : public AdventOfCode
         void partOne() override;
         void partTwo() override;
 };
+
+class Day6 final : public AdventOfCode 
+{
+    public:
+        Day6() : AdventOfCode(2018, 6) {}
+
+        void partOne() override;
+        void partTwo() override;
+};

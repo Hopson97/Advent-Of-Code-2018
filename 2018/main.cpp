@@ -12,5 +12,5 @@ int main()
     benchmark<Day2>();
     benchmark<Day3>();
     benchmark<Day4>();
-    //benchmark<Day5>();
+    // benchmark<Day5>();
 }

@@ -12,7 +12,7 @@ int dist(int a, int b, int c, int d)
     return yd + xd; // xd - yd;
 }
 
-void partOne()
+void Day6::partOne()
 {
     std::ifstream inFile("example.txt");
     std::string line;
@@ -73,4 +73,4 @@ void partOne()
     }
 }
 
-void partTwo() {}
+void Day6::partTwo() {}
