@@ -11,6 +11,7 @@ set(SOURCES
 add_executable(${PROJECT_NAME} 
     main.cpp
     day1.cpp
+    day2.cpp
 )
 
 target_include_directories(

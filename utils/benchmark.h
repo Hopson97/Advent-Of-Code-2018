@@ -58,17 +58,17 @@ class Benchmark {
         double m_maxTime;
 };
 
-template<typename F>
+template<int N = 100, typename F>
 void benchmark(const char* name, F f) {
-    Benchmark<100> bm(name, f);
+    Benchmark<N> bm(name, f);
     bm.outputTimes();
 }
 
-template<typename F>
+template<int N = 100, typename F>
 void benchmark(const char* partOne, F partOneFunction, const char* partTwo, F partTwoFunction) {
-    Benchmark<100> partOneBenchmark(partOne, partOneFunction);
-    Benchmark<100> partTwoBenchmark(partTwo, partTwoFunction);
-    Benchmark<100> allBenchmark("All", [partOneFunction, partTwoFunction]{
+    Benchmark<N> partOneBenchmark(partOne, partOneFunction);
+    Benchmark<N> partTwoBenchmark(partTwo, partTwoFunction);
+    Benchmark<N> allBenchmark("All", [partOneFunction, partTwoFunction]{
         partOneFunction(); 
         partTwoFunction();
     });
