@@ -89,28 +89,28 @@ namespace {
 
 } // namespace
 
-namespace day3 {
-    void partOne()
-    {
-        Claim::id = 1;
-        Grid grid;
-        grid.fill(0);
-        std::ifstream inFile("2018/inputs/day3.txt");
-        std::string line;
-        std::vector<Claim> claims;
-        while (std::getline(inFile, line)) {
-            auto &claim =
-                claims.emplace_back(parseLine(line.c_str(), Claim::id));
-            for (int y = claim.y; y < claim.y + claim.height; y++) {
-                for (int x = claim.x; x < claim.x + claim.width; x++) {
-                    grid[y * ARR_SIZE + x]++;
-                }
+void Day3::partOne()
+{
+    Claim::id = 1;
+    Grid grid;
+    grid.fill(0);
+    std::ifstream inFile("2018/inputs/day3.txt");
+    std::string line;
+    std::vector<Claim> claims;
+    while (std::getline(inFile, line)) {
+        auto &claim = claims.emplace_back(parseLine(line.c_str(), Claim::id));
+        for (int y = claim.y; y < claim.y + claim.height; y++) {
+            for (int x = claim.x; x < claim.x + claim.width; x++) {
+                grid[y * ARR_SIZE + x]++;
             }
         }
-
-        auto overlaps = countOverlaps(grid);
-        auto nonoverlapid = findNonoverlapId(grid, claims);
-
-        std::printf("%d %d", overlaps, nonoverlapid);
     }
-} // namespace day3
+
+    auto overlaps = countOverlaps(grid);
+    auto nonoverlapid = findNonoverlapId(grid, claims);
+
+    output(1, overlaps);
+    output(2, nonoverlapid);
+}
+
+void Day3::partTwo() {}

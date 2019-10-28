@@ -12,6 +12,10 @@ class AdventOfCode
             m_printResults = doesPrint;
         }
 
+        void title() {
+            std::cout << m_year << " Day " << m_day << std::endl;
+        }
+
         virtual void partOne() = 0;
         virtual void partTwo() = 0;
     

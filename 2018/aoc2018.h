@@ -6,24 +6,44 @@
 class Day1 final : public AdventOfCode 
 {
     public:
+        Day1() : AdventOfCode(2018, 1) {}
+
         void partOne() override;
         void partTwo() override;
 };
 
-namespace day2 {
-    void partOne();
-    void partTwo();
-}
+class Day2 final : public AdventOfCode 
+{
+    public:
+        Day2() : AdventOfCode(2018, 2) {}
 
-namespace day3 {
-    void partOne();
-}
+        void partOne() override;
+        void partTwo() override;
+};
 
-namespace day4 {
-    void partOne();
-}
+class Day3 final : public AdventOfCode 
+{
+    public:
+        Day3() : AdventOfCode(2018, 3) {}
 
-namespace day5 {
-    void partOne();
-    void partTwo();
-}
+        void partOne() override;
+        void partTwo() override;
+};
+
+class Day4 final : public AdventOfCode 
+{
+    public:
+        Day4() : AdventOfCode(2018, 4) {}
+
+        void partOne() override;
+        void partTwo() override;
+};
+
+class Day5 final : public AdventOfCode 
+{
+    public:
+        Day5() : AdventOfCode(2018, 5) {}
+
+        void partOne() override;
+        void partTwo() override;
+};

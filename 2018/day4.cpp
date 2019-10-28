@@ -65,79 +65,78 @@ namespace {
 
 } // namespace
 
-namespace day4 {
-
-    void partOne()
-    {
-        std::vector<DateAction> dateActions;
-        dateActions.reserve(1500);
-        std::ifstream inFile("2018/inputs/day4.txt");
-        std::string line;
-        while (std::getline(inFile, line)) {
-            dateActions.push_back(parseLine(line.c_str()));
-        }
-        std::sort(dateActions.begin(), dateActions.end());
-
-        uint16_t lastGuard = 0;
-        std::unordered_map<uint16_t, SleepShedule> guards;
-        guards.reserve(50);
-        int sleepMin = 0;
-        for (const auto &dateAction : dateActions) {
-            const auto &action = dateAction.action;
-            switch (action[0]) {
-                case 'G': { // Begin shift
-                    lastGuard = extractGuardNumber(action);
-                    guards.try_emplace(lastGuard, SleepShedule{});
-                } break;
-
-                case 'f': // Falls asleep
-                    sleepMin = dateAction.date.minute;
-                    break;
-
-                case 'w': { // Wakes up
-                    int sleepLength = dateAction.date.minute - sleepMin;
-                    auto &sleep = guards[lastGuard];
-                    sleep.total += sleepLength;
-                    for (int i = sleepMin; i < dateAction.date.minute; i++) {
-                        sleep.hours[i]++;
-                    }
-                } break;
-
-                default: // Keep the compiler happy
-                    break;
-            }
-        }
-
-        // Find guard with longest sleep
-        uint16_t frequentSleeper = guards.begin()->first;
-        uint16_t laziest = frequentSleeper;
-        int hour = 0;
-        int amount = 0;
-        for (auto &g : guards) {
-            if (g.second.total > guards[laziest].total) {
-                laziest = g.first;
-            }
-            const auto &h = g.second.hours;
-            for (size_t i = 0; i < h.size(); i++) {
-                if (h[i] > amount) {
-                    amount = h[i];
-                    hour = i;
-                    frequentSleeper = g.first;
-                }
-            }
-        }
-
-        const auto &h = guards[laziest].hours;
-        int idx = 0;
-        int max = 0;
-        for (size_t i = 0; i < h.size(); i++) {
-            if (h[i] > max) {
-                max = h[i];
-                idx = i;
-            }
-        }
-
-        std::cout << (int)laziest * idx << " "           // Part 1
-                  << (int)frequentSleeper * hour << " "; // Part 2
+void Day4::partOne()
+{
+    std::vector<DateAction> dateActions;
+    dateActions.reserve(1500);
+    std::ifstream inFile("2018/inputs/day4.txt");
+    std::string line;
+    while (std::getline(inFile, line)) {
+        dateActions.push_back(parseLine(line.c_str()));
     }
-} // namespace day4
+    std::sort(dateActions.begin(), dateActions.end());
+
+    uint16_t lastGuard = 0;
+    std::unordered_map<uint16_t, SleepShedule> guards;
+    guards.reserve(50);
+    int sleepMin = 0;
+    for (const auto &dateAction : dateActions) {
+        const auto &action = dateAction.action;
+        switch (action[0]) {
+            case 'G': { // Begin shift
+                lastGuard = extractGuardNumber(action);
+                guards.try_emplace(lastGuard, SleepShedule{});
+            } break;
+
+            case 'f': // Falls asleep
+                sleepMin = dateAction.date.minute;
+                break;
+
+            case 'w': { // Wakes up
+                int sleepLength = dateAction.date.minute - sleepMin;
+                auto &sleep = guards[lastGuard];
+                sleep.total += sleepLength;
+                for (int i = sleepMin; i < dateAction.date.minute; i++) {
+                    sleep.hours[i]++;
+                }
+            } break;
+
+            default: // Keep the compiler happy
+                break;
+        }
+    }
+
+    // Find guard with longest sleep
+    uint16_t frequentSleeper = guards.begin()->first;
+    uint16_t laziest = frequentSleeper;
+    int hour = 0;
+    int amount = 0;
+    for (auto &g : guards) {
+        if (g.second.total > guards[laziest].total) {
+            laziest = g.first;
+        }
+        const auto &h = g.second.hours;
+        for (size_t i = 0; i < h.size(); i++) {
+            if (h[i] > amount) {
+                amount = h[i];
+                hour = i;
+                frequentSleeper = g.first;
+            }
+        }
+    }
+
+    const auto &h = guards[laziest].hours;
+    int idx = 0;
+    int max = 0;
+    for (size_t i = 0; i < h.size(); i++) {
+        if (h[i] > max) {
+            max = h[i];
+            idx = i;
+        }
+    }
+
+    output(1, (int)laziest * idx);
+    output(2, (int)frequentSleeper * hour);
+}
+
+void Day4::partTwo() {}

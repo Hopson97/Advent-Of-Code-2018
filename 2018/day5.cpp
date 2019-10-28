@@ -19,41 +19,34 @@ namespace {
     }
 } // namespace
 
-namespace day5 {
+void Day5::partOne()
+{
+    std::ifstream inFile("2018/inputs/day5.txt");
+    std::string line;
+    line.reserve(50'000);
+    inFile >> line;
+    retractString(line);
+    output(1, line.length());
+}
 
-    void partOne()
-    {
-        std::ifstream inFile("2018/inputs/day5.txt");
-        std::string line;
-        line.reserve(50'000);
-        inFile >> line;
-        retractString(line);
-        std::cout << line.length() << ' ';
+void Day5::partTwo()
+{
+    std::ifstream inFile("2018/inputs/day5.txt");
+    std::string line;
+    line.reserve(50'000);
+    inFile >> line;
+
+    std::vector<int> sizes;
+    for (char lower = 'a'; lower < 'z'; lower++) {
+        std::string copy = line;
+        char upper = toupper(lower);
+        copy.erase(std::remove_if(copy.begin(), copy.end(),
+                                  [upper, lower](unsigned char c) {
+                                      return (int)c == upper || (int)c == lower;
+                                  }),
+                   copy.end());
+        retractString(copy);
+        sizes.push_back(copy.length());
     }
-
-    void partTwo()
-    {
-        std::ifstream inFile("2018/inputs/day5.txt");
-        if (!inFile.is_open()) {
-            std::cout << "FILE IS NOT OPEN\n";
-        }
-        std::string line;
-        line.reserve(50'000);
-        inFile >> line;
-
-        std::vector<int> sizes;
-        for (char lower = 'a'; lower < 'z'; lower++) {
-            std::string copy = line;
-            char upper = toupper(lower);
-            copy.erase(std::remove_if(copy.begin(), copy.end(),
-                                      [upper, lower](unsigned char c) {
-                                          return (int)c == upper ||
-                                                 (int)c == lower;
-                                      }),
-                       copy.end());
-            retractString(copy);
-            sizes.push_back(copy.length());
-        }
-        std::cout << *std::min_element(sizes.begin(), sizes.end()) << '\n';
-    }
-} // namespace day5
+    output(2, *std::min_element(sizes.begin(), sizes.end()) << '\n');
+}
