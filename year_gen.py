@@ -73,39 +73,33 @@ Link: https://adventofcode.com/YEAR\n\
 \n\
 "
 
-for year in range(2015, 2019):
-    dirName = year
-    if not os.path.exists(dirName):
-        #Create dirs
-        os.mkdir(dirName)
-        os.mkdir(dirName + "/inputs")
-        sources = ""
-
-        #Write header file
-        with open(dirName + '/aoc' + year + ".h", 'w') as header:
-            header.write("#pragma once\n\n")
-            header.write("#include <aoc/util.h>\n")
-            header.write("#include <aoc/aoc.h>\n")
-
-            #Create main.cpp
-            with open(dirName + '/main.cpp', 'w') as main:
-                main.write(MAIN.replace("YEAR", year))
-
-            #Create daily files
-            for i in range(20):
-                header.write(CLASS.replace("DAY", str(i + 1)).replace("YEAR", year))
-
-                #Create implementation files
-                with open(dirName + '/day' + str(i + 1) + ".cpp", 'w') as day:
-                    day.write(IMPL.replace("DAY", str(i + 1)).replace("YEAR", year))
-                    sources += "Day" + str(i + 1) + '\n'
-                
-                #Create input files
-                with open(dirName + '/inputs/day' + str(i + 1) + ".txt", 'w') as day:
-                    day.write("")
-
-        with open(dirName + '/CMakeLists.txt', 'w') as cmake:
-            cmake.write(CMAKE.replace("SOURCES", sources).replace("YEAR", year))
-
-        with open(dirName + '/README.md', 'w') as readme:
-            readme.write(README.replace("YEAR", year))
+dirName = '2019'
+year = dirName
+if not os.path.exists(dirName):
+    #Create dirs
+    os.mkdir(dirName)
+    os.mkdir(dirName + "/inputs")
+    sources = ""
+    #Write header file
+    with open(dirName + '/aoc' + year + ".h", 'w') as header:
+        header.write("#pragma once\n\n")
+        header.write("#include <aoc/util.h>\n")
+        header.write("#include <aoc/aoc.h>\n")
+        #Create main.cpp
+        with open(dirName + '/main.cpp', 'w') as main:
+            main.write(MAIN.replace("YEAR", year))
+        #Create daily files
+        for i in range(20):
+            header.write(CLASS.replace("DAY", str(i + 1)).replace("YEAR", year))
+            #Create implementation files
+            with open(dirName + '/day' + str(i + 1) + ".cpp", 'w') as day:
+                day.write(IMPL.replace("DAY", str(i + 1)).replace("YEAR", year))
+                sources += "Day" + str(i + 1) + '\n'
+            
+            #Create input files
+            with open(dirName + '/inputs/day' + str(i + 1) + ".txt", 'w') as day:
+                day.write("")
+    with open(dirName + '/CMakeLists.txt', 'w') as cmake:
+        cmake.write(CMAKE.replace("SOURCES", sources).replace("YEAR", year))
+    with open(dirName + '/README.md', 'w') as readme:
+        readme.write(README.replace("YEAR", year))
