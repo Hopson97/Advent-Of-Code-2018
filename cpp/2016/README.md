@@ -8,7 +8,7 @@ Link: https://adventofcode.com/2016
 
 |Day|Part One|Part Two|Link|
 |:---:|:----:|:------:|:---:|
-|Day 1|Not Complete|Not Complete|[2016 Day 1 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2016/day1.cpp)|
+|Day 1|28/10/2019|28/10/19|[2016 Day 1 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2016/day1.cpp)|
 |Day 2|Not Complete|Not Complete|[2016 Day 2 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2016/day2.cpp)|
 |Day 3|Not Complete|Not Complete|[2016 Day 3 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2016/day3.cpp)|
 |Day 4|Not Complete|Not Complete|[2016 Day 4 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2016/day4.cpp)|
