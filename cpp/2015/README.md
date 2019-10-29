@@ -6,4 +6,5 @@ Link: https://adventofcode.com/2015
 
 ## 2015 Completion Dates
 
-|Day|Part One|Part Two|Link||---|--------|--------|----|
+|Day|Part One|Part Two|Link|
+|:---:|:----:|:------:|:---:|

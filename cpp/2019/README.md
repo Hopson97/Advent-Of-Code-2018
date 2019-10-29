@@ -6,4 +6,5 @@ Link: https://adventofcode.com/2019
 
 ## 2019 Completion Dates
 
-|Day|Part One|Part Two|Link||---|--------|--------|----|
+|Day|Part One|Part Two|Link|
+|:---:|:----:|:------:|:---:|

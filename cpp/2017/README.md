@@ -6,4 +6,5 @@ Link: https://adventofcode.com/2017
 
 ## 2017 Completion Dates
 
-|Day|Part One|Part Two|Link||---|--------|--------|----|
+|Day|Part One|Part Two|Link|
+|:---:|:----:|:------:|:---:|
