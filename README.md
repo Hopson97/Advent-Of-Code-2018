@@ -1,5 +1,9 @@
 # Advent of Code
 
-Also known as "Advent of Code: Enterprise edition".
+Solutions to advent of code in some languages, mostly C++
 
-Silly overengineered set up for advent of code problems.
+## Solutions
+
+Links to solution index:
+
+[C++ Solution Index](https://github.com/Hopson97/advent-of-code/blob/master/cpp/README.md)
