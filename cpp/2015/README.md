@@ -10,7 +10,7 @@ Link: https://adventofcode.com/2015
 |:---:|:----:|:------:|:---:|
 |Day 1|29/10/2019|29/10/2019|[2015 Day 1 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day1.cpp)|
 |Day 2|29/10/2019|29/10/2019|[2015 Day 2 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day2.cpp)|
-|Day 3|29/10/2019|NA|[2015 Day 3 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day3.cpp)|
+|Day 3|29/10/2019|29/10/2019|[2015 Day 3 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day3.cpp)|
 |Day 4|NA|NA|[2015 Day 4 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day4.cpp)|
 |Day 5|NA|NA|[2015 Day 5 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day5.cpp)|
 |Day 6|NA|NA|[2015 Day 6 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day6.cpp)|
