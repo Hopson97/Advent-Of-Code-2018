@@ -4,4 +4,4 @@ My solutions to advent of code YEAR
 
 Link: https://adventofcode.com/YEAR
 
-## Solutions Table
+## YEAR Completion Dates

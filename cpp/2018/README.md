@@ -4,4 +4,6 @@ My solutions to advent of code 2018
 
 Link: https://adventofcode.com/2018
 
-## Solutions Table
+## 2018 Completion Dates
+
+|Day|Part One|Part Two|Link||---|--------|--------|----|
