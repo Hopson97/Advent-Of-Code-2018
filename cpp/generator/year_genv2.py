@@ -15,7 +15,7 @@ implementationTemplate = getContent("v2/source.txt")
 cmakeTemplate = getContent("cmake.txt")
 readmeTemplate = getContent("readme.txt")
 
-dirName = '2017'
+dirName = '2019'
 year = dirName
 if not os.path.exists(dirName):
     #Create dirs
@@ -32,7 +32,7 @@ if not os.path.exists(dirName):
         with open(dirName + '/main.cpp', 'w') as main:
             main.write(mainTemplate.replace("YEAR", year))
         #Create daily files
-        for i in range(20):
+        for i in range(25):
             header.write(declarationTemplate.replace("DAY", str(i + 1)).replace("YEAR", year))
             #Create implementation files
             with open(dirName + '/day' + str(i + 1) + ".cpp", 'w') as day:
