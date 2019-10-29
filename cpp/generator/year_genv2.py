@@ -1,12 +1,8 @@
 
 import os
 import re
-
-def getContent(fileName):
-    f = open("generator/" + fileName, "r")
-    c = str(f.read())
-    f.close()
-    return c
+from get_content import getContent
+from writer import writeImpl, writeInputFile
 
 mainTemplate = getContent("main.txt")
 declarationTemplate = getContent("v2/declare.txt")
@@ -35,9 +31,8 @@ if not os.path.exists(dirName):
         for i in range(25):
             header.write(declarationTemplate.replace("DAY", str(i + 1)).replace("YEAR", year))
             #Create implementation files
-            with open(dirName + '/day' + str(i + 1) + ".cpp", 'w') as day:
-                day.write(implementationTemplate.replace("DAY", str(i + 1)).replace("YEAR", year))
-                sources += "\tday" + str(i + 1) + '.cpp\n'
+            writeImpl(dirName, str(i + 1), implementationTemplate, year)
+            sources += "\tday" + str(i + 1) + '.cpp\n'
             
             #Create input files
             with open(dirName + '/inputs/day' + str(i + 1) + ".txt", 'w') as day:

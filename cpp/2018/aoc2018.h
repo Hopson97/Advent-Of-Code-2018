@@ -63,4 +63,19 @@ namespace aoc2018 {
 
     void day20PartOne(bool outputResults = true);
     void day20PartTwo(bool outputResults = true);
+    
+    void day21PartOne(bool outputResults = true);
+    void day21PartTwo(bool outputResults = true);
+
+    void day22PartOne(bool outputResults = true);
+    void day22PartTwo(bool outputResults = true);
+
+    void day23PartOne(bool outputResults = true);
+    void day23PartTwo(bool outputResults = true);
+
+    void day24PartOne(bool outputResults = true);
+    void day24PartTwo(bool outputResults = true);
+
+    void day25PartOne(bool outputResults = true);
+    void day25PartTwo(bool outputResults = true);
 } // namespace aoc2018
