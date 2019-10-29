@@ -25,4 +25,10 @@ namespace aoc::string {
         str.erase(std::remove(str.begin(), str.end(), remove), str.end());
         return str;
     }
+
+    template<typename StringType = std::string, typename FindType = std::string>
+    bool contains(const StringType& string, const FindType& find)
+    {
+        return string.find(find) != std::string::npos;
+    }
 } //namespace aoc::string
