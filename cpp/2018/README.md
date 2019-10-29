@@ -8,11 +8,11 @@ Link: https://adventofcode.com/2018
 
 |Day|Part One|Part Two|Link|
 |:---:|:----:|:------:|:---:|
-|Day 1|Not Complete|Not Complete|[2018 Day 1 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day1.cpp)|
-|Day 2|Not Complete|Not Complete|[2018 Day 2 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day2.cpp)|
-|Day 3|Not Complete|Not Complete|[2018 Day 3 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day3.cpp)|
-|Day 4|Not Complete|Not Complete|[2018 Day 4 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day4.cpp)|
-|Day 5|Not Complete|Not Complete|[2018 Day 5 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day5.cpp)|
+|Day 1|01/12/2018|01/12/2018|[2018 Day 1 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day1.cpp)|
+|Day 2|02/12/2018|02/12/2018|[2018 Day 2 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day2.cpp)|
+|Day 3|03/12/2018|03/12/2018|[2018 Day 3 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day3.cpp)|
+|Day 4|04/12/2018|04/12/2018|[2018 Day 4 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day4.cpp)|
+|Day 5|05/12/2018|05/12/2018|[2018 Day 5 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day5.cpp)|
 |Day 6|Not Complete|Not Complete|[2018 Day 6 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day6.cpp)|
 |Day 7|Not Complete|Not Complete|[2018 Day 7 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day7.cpp)|
 |Day 8|Not Complete|Not Complete|[2018 Day 8 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2018/day8.cpp)|
