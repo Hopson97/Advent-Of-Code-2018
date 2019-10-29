@@ -15,8 +15,8 @@ class Benchmark {
     using TimeUnit    = std::chrono::microseconds;
     using UnitType  = std::int64_t;
     public:
-        template <typename F, typename... Args>
-        Benchmark(const char* name, F function, Args... args)
+        template <typename F>
+        Benchmark(const char* name, F function)
         :   m_name(name) 
         { 
             UnitType total = 0;
@@ -28,15 +28,15 @@ class Benchmark {
             std::cout << "| ";
             for (int i = 0; i < N; i++) {
                 auto begin = Clock::now();
-                function(std::forward<Args>(args)...);
+                function();
                 auto end = Clock::now();
                 auto time = end - begin;
                 auto ms = std::chrono::duration_cast<TimeUnit>(time);
                 total += ms.count();
                 times[i] = ms.count();
                 if (i % 5 == 0) {
-                    std::cout << "= ";
-                    std::cout.flush();
+                    //std::cout << "= ";
+                    //std::cout.flush();
                 }
             }
             std::cout << "|\n" << std::endl;
@@ -50,13 +50,14 @@ class Benchmark {
         void outputTimes() {
             std::cout  << 
                 "\n\n" <<
-                "Results for benchmark: "  << m_name               << '\n' <<
-                "Times benchmarked: "      << N                    << "\n\n"<<
-                "  Total time: "           << m_totalTime          << "ms\n"<<
-                "Average time: "           << m_avgTime / 1000.0   << "ms\n"<<
-                "Minimum time: "           << m_minTime / 1000.0   << "ms\n"<<
-                "Maximum time: "           << m_maxTime / 1000.0   << "ms\n"<<
-                "       Range: "           << (m_maxTime - m_minTime) / 1000.0 << "ms" << std::endl;
+                "Results for benchmark: "  << m_name                << '\n' <<
+                "Times benchmarked: "      << N                     << "\n\n"<<
+                "  Total time: "           << m_totalTime           << " microseconds\n"<<
+                "  Total time: "           << m_totalTime / 1000000 << " seconds\n"<<
+                "Average time: "           << m_avgTime / 1000.0    << " microseconds\n"<<
+                "Minimum time: "           << m_minTime / 1000.0    << " microseconds\n"<<
+                "Maximum time: "           << m_maxTime / 1000.0    << " microseconds\n"<<
+                "       Range: "           << (m_maxTime - m_minTime) / 1000.0 << " microseconds" << std::endl;
         }
     private:
 
@@ -67,29 +68,26 @@ class Benchmark {
         double m_maxTime;
 };
 
-template<typename Day, int N = 100>
-void benchmark() {
-    Day day;
-    day.setPrint(false);
-
+template<int N = 128, typename F>
+void benchmark(int year, int day , F partOne, F partTwo) {
     std::cout << "\n\n- - - - - - - - - - - - - - - - - - - - -\n";
-    day.title();
+    std::cout << "Benchmarking " << year << " day " << day << '\n';
     std::cout << "- - - - - - - - - - - - - - - - - - - - -\n";
  
     std::cout << "Running part 1" << std::endl;
-    Benchmark<N> p1Benchmark("Part 1", [&day]() {
-        day.partOne();
+    Benchmark<N> p1Benchmark("Part 1", [&partOne]() {
+        partOne(false);
     });
 
     std::cout << "Running part 2" << std::endl;
-    Benchmark<N> p2Benchmark("Part 2", [&day]() {
-        day.partTwo();
+    Benchmark<N> p2Benchmark("Part 2", [&partTwo]() {
+        partTwo(false);
     });
 
     std::cout << "Running part 1 and part 2" << std::endl;
-    Benchmark<N> allBenchmark("Part 1 + Part 2", [&day]{
-        day.partOne();
-        day.partTwo();
+    Benchmark<N> allBenchmark("Part 1 + Part 2", [&partOne, &partTwo]{
+        partOne(false);
+        partTwo(false);
     });
 
     p1Benchmark.outputTimes();
