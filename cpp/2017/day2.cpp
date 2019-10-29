@@ -54,10 +54,26 @@ namespace aoc2017 {
 
         int sum = 0;
         for (int i = 0; i < grid.height; i++) {
-            sum +=
-                *std::max_element(grid.grid[i].cbegin(), grid.grid[i].cend()) -
-                *std::min_element(grid.grid[i].cbegin(), grid.grid[i].cend());
+            for (int j = 0; j < grid.width; j++) {
+
+                for (int k = 0; k < grid.width; k++) {
+                    if (j == k) {
+                        continue;
+                    }
+                    int a = grid.grid[i][j];
+                    int b = grid.grid[i][k];
+                    if (a % b == 0 || b % a == 0) {
+
+                        if (a > b) {
+                            sum += a / b;
+                        }
+                        else {
+                            sum += b / a;
+                        }
+                    }
+                }
+            }
         }
-        aoc::output(doPrint, 2017, 2, 2, sum);
+        aoc::output(doPrint, 2017, 2, 2, sum / 2);
     }
 } // namespace aoc2017
