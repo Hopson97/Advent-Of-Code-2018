@@ -24,6 +24,15 @@ namespace aoc2015 {
     void day1PartTwo(bool doPrint)
     {
         std::ifstream inFile(INPUT_PATH);
-        aoc::output(doPrint, 2015, 1, 2, "None");
+        int floor = 0;
+        int pos = 1;
+        for (auto stair : aoc::file_io::readAsLine(INPUT_PATH)) {
+            floor += stair == '(' ? 1 : -1;
+            if (floor == -1) {
+                aoc::output(doPrint, 2015, 1, 2, pos);
+                return;
+            }
+            pos++;
+        }
     }
 } // namespace aoc2015

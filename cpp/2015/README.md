@@ -8,7 +8,7 @@ Link: https://adventofcode.com/2015
 
 |Day|Part One|Part Two|Link|
 |:---:|:----:|:------:|:---:|
-|Day 1|29/10/2019|Not Complete|[2015 Day 1 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day1.cpp)|
+|Day 1|29/10/2019|29/10/2019|[2015 Day 1 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day1.cpp)|
 |Day 2|Not Complete|Not Complete|[2015 Day 2 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day2.cpp)|
 |Day 3|Not Complete|Not Complete|[2015 Day 3 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day3.cpp)|
 |Day 4|Not Complete|Not Complete|[2015 Day 4 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2015/day4.cpp)|
