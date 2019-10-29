@@ -47,7 +47,9 @@ namespace aoc2015 {
                            std::back_insert_iterator(dims),
                            [](std::string s) { return std::stoi(s); });
             std::sort(dims.begin(), dims.end());
-            sum += dims[0] * 2 + dims[1] * 2 + std::accumulate(dims.begin(), dims.end(), 1, std::multiplies<double>());
+            sum += dims[0] * 2 + dims[1] * 2 +
+                   std::accumulate(dims.begin(), dims.end(), 1,
+                                   std::multiplies<double>());
         }
         aoc::output(doPrint, 2015, 2, 2, sum);
     }

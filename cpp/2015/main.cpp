@@ -3,6 +3,6 @@
 
 int main()
 {
-    aoc2015::day2PartOne();
-    aoc2015::day2PartTwo();
+    aoc2015::day3PartOne();
+    aoc2015::day3PartTwo();
 }
