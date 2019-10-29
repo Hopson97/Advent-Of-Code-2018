@@ -1,9 +1,9 @@
 #pragma once
 
-#include <aoc/util.h>
 #include <aoc/aoc.h>
+#include <aoc/util.h>
 
-namespace aoc2019{ 
+namespace aoc2019 {
     void day1PartOne(bool outputResults = true);
     void day1PartTwo(bool outputResults = true);
 
@@ -78,4 +78,4 @@ namespace aoc2019{
 
     void day25PartOne(bool outputResults = true);
     void day25PartTwo(bool outputResults = true);
-} // aoc2019
+} // namespace aoc2019

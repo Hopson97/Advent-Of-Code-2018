@@ -6,7 +6,7 @@
 */
 
 namespace {
-    const char* INPUT_PATH = "2019/inputs/day3.txt";
+    const char *INPUT_PATH = "2019/inputs/day3.txt";
 } // namespace
 
 namespace aoc2019 {
@@ -21,4 +21,4 @@ namespace aoc2019 {
         std::ifstream inFile(INPUT_PATH);
         aoc::output(doPrint, 2019, 3, 2, "None");
     }
-} // aoc2019
+} // namespace aoc2019

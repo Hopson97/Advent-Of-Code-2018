@@ -7,7 +7,7 @@
 
 namespace {
     const char *INPUT_PATH = "2017/inputs/day1.txt";
-    
+
     int sum(const std::string &input, int skip)
     {
         int sum = 0;

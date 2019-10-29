@@ -63,7 +63,7 @@ namespace aoc2018 {
 
     void day20PartOne(bool outputResults = true);
     void day20PartTwo(bool outputResults = true);
-    
+
     void day21PartOne(bool outputResults = true);
     void day21PartTwo(bool outputResults = true);
 

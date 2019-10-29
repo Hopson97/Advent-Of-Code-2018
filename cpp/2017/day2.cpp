@@ -15,12 +15,12 @@ namespace {
         int height = 0;
     };
 
-    auto createGrid() 
+    auto createGrid()
     {
         std::ifstream inFile(INPUT_PATH);
         Grid grid;
         std::string line;
-        while(std::getline(inFile, line)) {
+        while (std::getline(inFile, line)) {
             grid.grid.emplace_back();
             auto toks = aoc::string::split(line, '\t');
             grid.width = toks.size();
@@ -41,7 +41,9 @@ namespace aoc2017 {
 
         int sum = 0;
         for (int i = 0; i < grid.height; i++) {
-            sum += *std::max_element(grid.grid[i].cbegin(), grid.grid[i].cend()) - *std::min_element(grid.grid[i].cbegin(), grid.grid[i].cend());
+            sum +=
+                *std::max_element(grid.grid[i].cbegin(), grid.grid[i].cend()) -
+                *std::min_element(grid.grid[i].cbegin(), grid.grid[i].cend());
         }
         aoc::output(doPrint, 2017, 2, 1, sum);
     }
@@ -52,7 +54,9 @@ namespace aoc2017 {
 
         int sum = 0;
         for (int i = 0; i < grid.height; i++) {
-            sum += *std::max_element(grid.grid[i].cbegin(), grid.grid[i].cend()) - *std::min_element(grid.grid[i].cbegin(), grid.grid[i].cend());
+            sum +=
+                *std::max_element(grid.grid[i].cbegin(), grid.grid[i].cend()) -
+                *std::min_element(grid.grid[i].cbegin(), grid.grid[i].cend());
         }
         aoc::output(doPrint, 2017, 2, 2, sum);
     }

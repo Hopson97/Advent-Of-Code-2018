@@ -1,5 +1,5 @@
-#include <aoc/benchmark.h>
 #include "aoc2015.h"
+#include <aoc/benchmark.h>
 
 int main()
 {
