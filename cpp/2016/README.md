@@ -3,3 +3,5 @@
 My solutions to advent of code 2016
 
 Link: https://adventofcode.com/2016
+
+## Solutions Table
