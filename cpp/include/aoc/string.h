@@ -7,7 +7,7 @@
 namespace aoc::string {
 
     template<typename StringType = std::string>
-    std::vector<StringType> split(const StringType &input, char delim) 
+    std::vector<StringType> split(const StringType &input, char delim = ' ') 
     {
         std::vector<StringType> tokens;
         std::stringstream stream(input);
