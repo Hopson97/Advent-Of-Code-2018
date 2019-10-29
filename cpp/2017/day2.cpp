@@ -25,7 +25,7 @@ namespace {
             auto toks = aoc::string::split(line, '\t');
             grid.width = toks.size();
             grid.height++;
-            for (auto line : toks) {
+            for (const auto &line : toks) {
                 grid.grid.back().push_back(std::stoi(line));
             }
         }

@@ -117,7 +117,7 @@ namespace aoc2018 {
         u16 laziest = frequentSleeper;
         int hour = 0;
         int amount = 0;
-        for (auto &g : guards) {
+        for (const auto &g : guards) {
             if (g.second.total > guards[laziest].total) {
                 laziest = g.first;
             }
