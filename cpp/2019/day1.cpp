@@ -14,6 +14,16 @@ namespace {
     {
         return std::floor(mass / 3.0f) - 2.0f;
     }
+
+    int fueler(int in)
+    {
+        int f = fuelNeeded(in);
+        if (f <= 0) {
+            return in;
+        }
+        return in + fueler(f);
+    }
+
 } // namespace
 
 namespace aoc2019 {
@@ -32,21 +42,7 @@ namespace aoc2019 {
         auto masses = aoc::file_io::readAsLines(INPUT_PATH);
         int totalFuel = 0;
         for (auto mass : masses) {
-            int fuel = fuelNeeded(std::stof(mass));
-
-            int total = fuel;
-            int last = fuel;
-            while (true) {
-                int newF = fuelNeeded(last);
-                if (newF > 0) {
-                    last = newF;
-                    total += newF;
-                }
-                else {
-                    break;
-                }
-            }
-            totalFuel += total;
+            totalFuel += fueler(fuelNeeded(std::stof(mass)));
         }
         aoc::output(doPrint, 2019, 1, 2, totalFuel);
     }
