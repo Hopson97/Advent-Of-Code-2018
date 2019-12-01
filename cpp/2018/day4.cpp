@@ -145,5 +145,8 @@ namespace aoc2018 {
         aoc::output(doPrint, 2018, 4, 2, frequentSleeper * hour);
     }
 
-    void day4PartTwo(bool doPrint) { (void)doPrint; }
+    void day4PartTwo(bool doPrint)
+    {
+        (void)doPrint;
+    }
 } // namespace aoc2018

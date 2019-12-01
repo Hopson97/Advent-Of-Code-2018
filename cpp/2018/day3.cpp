@@ -122,5 +122,8 @@ namespace aoc2018 {
         aoc::output(doPrint, 2018, 3, 2, nonoverlapid);
     }
 
-    void day3PartTwo(bool doPrint) { (void)doPrint; }
+    void day3PartTwo(bool doPrint)
+    {
+        (void)doPrint;
+    }
 } // namespace aoc2018

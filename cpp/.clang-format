@@ -9,3 +9,5 @@ NamespaceIndentation: All
 
 BreakConstructorInitializersBeforeComma: true
 AlwaysBreakTemplateDeclarations: true
+
+AllowShortFunctionsOnASingleLine: None

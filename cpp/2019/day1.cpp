@@ -10,7 +10,10 @@
 namespace {
     const char *INPUT_PATH = "2019/inputs/day1.txt";
 
-    int fuelNeeded(float mass) { return std::floor(mass / 3.0f) - 2.0f; }
+    int fuelNeeded(float mass)
+    {
+        return std::floor(mass / 3.0f) - 2.0f;
+    }
 } // namespace
 
 namespace aoc2019 {
