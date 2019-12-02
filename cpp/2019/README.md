@@ -9,7 +9,7 @@ Link: https://adventofcode.com/2019
 |Day|Part One|Part Two|Link|
 |:---:|:----:|:------:|:---:|
 |Day 1|01/12/19|01/12/19|[2019 Day 1 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2019/day1.cpp)|
-|Day 2|NA|NA|[2019 Day 2 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2019/day2.cpp)|
+|Day 2|02/12/19|02/12/19|[2019 Day 2 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2019/day2.cpp)|
 |Day 3|NA|NA|[2019 Day 3 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2019/day3.cpp)|
 |Day 4|NA|NA|[2019 Day 4 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2019/day4.cpp)|
 |Day 5|NA|NA|[2019 Day 5 File](https://github.com/Hopson97/advent-of-code/blob/master/cpp/2019/day5.cpp)|
