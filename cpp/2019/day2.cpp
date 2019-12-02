@@ -32,16 +32,22 @@ namespace {
             }
         }
     }
-} // namespace
 
-namespace aoc2019 {
-    void day2PartOne(bool doPrint)
+    auto getOps()
     {
         auto input = aoc::file_io::readAsLine(INPUT_PATH);
         auto opstrings = aoc::string::split(input, ',');
         std::vector<int> ops;
         std::transform(opstrings.begin(), opstrings.end(), std::back_inserter(ops),
                        [](auto a) { return std::stoi(a); });
+        return ops;
+    }
+} // namespace
+
+namespace aoc2019 {
+    void day2PartOne(bool doPrint)
+    {
+        auto ops = getOps();
         ops[1] = 12;
         ops[2] = 2;
         run(ops);
@@ -51,11 +57,7 @@ namespace aoc2019 {
 
     void day2PartTwo(bool doPrint)
     {
-        auto input = aoc::file_io::readAsLine(INPUT_PATH);
-        auto opstrings = aoc::string::split(input, ',');
-        std::vector<int> ops;
-        std::transform(opstrings.begin(), opstrings.end(), std::back_inserter(ops),
-                       [](auto a) { return std::stoi(a); });
+        auto ops = getOps();
         auto reset = ops;
         for (int i = 0; i < 100; i++) {
             for (int j = 0; j < 100; j++) {
