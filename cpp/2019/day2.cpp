@@ -15,7 +15,7 @@ namespace aoc2019 {
     void day2PartOne(bool doPrint)
     {
         auto input = aoc::file_io::readAsLine(INPUT_PATH);
-        auto opstrings = aoc::string::split(input, ',');
+        //auto opstrings = aoc::string::split(input, ',');
 
         std::vector<int> ops;
 /*

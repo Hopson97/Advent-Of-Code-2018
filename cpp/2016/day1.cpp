@@ -99,5 +99,8 @@ namespace aoc2016 {
         aoc::output(doPrint, 2016, 1, 1, "None");
     }
 
-    void day1PartTwo(bool doPrint) { (void)doPrint; }
+    void day1PartTwo(bool doPrint)
+    {
+        (void)doPrint;
+    }
 } // namespace aoc2016

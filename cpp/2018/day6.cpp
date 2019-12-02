@@ -17,5 +17,8 @@ namespace aoc2018 {
         aoc::output(doPrint, 2018, 6, 1, "None");
     }
 
-    void day6PartTwo(bool doPrint) { (void)doPrint; }
+    void day6PartTwo(bool doPrint)
+    {
+        (void)doPrint;
+    }
 } // namespace aoc2018
