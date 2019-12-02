@@ -31,8 +31,6 @@ namespace aoc2016 {
                 }
             }
             sides.push_back(std::stoi(number));
-
-            
         }
         aoc::output(doPrint, 2016, 3, 1, "None");
     }
