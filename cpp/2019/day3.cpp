@@ -18,8 +18,9 @@ namespace {
                                                       {'U', Vec{0, 1}}};
 
     template <typename F>
-    void walk(std::vector<std::string> &input, Vec &location, F onStep)
+    void walk(std::vector<std::string> &input, F onStep)
     {
+        Vec location;
         for (auto &direction : input) {
             auto directionVector = DIRECTIONS.at(direction[0]);
             direction.erase(direction.begin());
@@ -28,13 +29,13 @@ namespace {
             if (directionVector.x != 0) {
                 for (int i = 0; i < amount; i++) {
                     location.x += directionVector.x;
-                    onStep();
+                    onStep(location);
                 }
             }
             else if (directionVector.y != 0) {
                 for (int i = 0; i < amount; i++) {
                     location.y += directionVector.y;
-                    onStep();
+                    onStep(location);
                 }
             }
         }
@@ -48,15 +49,13 @@ namespace aoc2019 {
         auto blueWire = aoc::string::split(input[0], ',');
         auto redWire = aoc::string::split(input[1], ',');
 
+        std::vector<int> intersects;
         aoc::maths::VectorSet<int> visited;
         visited.emplace(Vec{0, 0});
     
-        Vec blueLocation;
-        walk(blueWire, blueLocation, [&]() { visited.emplace(blueLocation); });
 
-        std::vector<int> intersects;
-        Vec redLocation;
-        walk(redWire, redLocation, [&]() {
+        walk(blueWire, [&](const Vec& blueLocation) { visited.emplace(blueLocation); });
+        walk(redWire, [&](const Vec& redLocation) {
             if (visited.find(redLocation) != visited.cend()) {
                 intersects.push_back(std::abs(redLocation.x) +
                                      std::abs(redLocation.y));
@@ -76,18 +75,16 @@ namespace aoc2019 {
         std::unordered_map<Vec, int, aoc::maths::Vector2Hash<int>> visited;
         visited.emplace(Vec{0, 0}, 0);
     
-        Vec blueLocation;
         int blueDistance = 0;
-        walk(blueWire, blueLocation, [&]() 
+        walk(blueWire, [&](const Vec& blueLocation) 
         { 
             blueDistance++;
             visited.emplace(blueLocation, blueDistance); 
         });
         
         std::vector<int> intersects;
-        Vec redLocation;
         int redDistance = 0;
-        walk(redWire, redLocation, [&]() {
+        walk(redWire, [&](const Vec& redLocation) {
             redDistance++;
             if (visited.find(redLocation) != visited.cend()) {
                 intersects.push_back(redDistance + visited.at(redLocation));
