@@ -50,14 +50,12 @@ namespace aoc2019 {
 
         aoc::maths::VectorSet<int> visited;
         visited.emplace(Vec{0, 0});
-
+    
         Vec blueLocation;
-
         walk(blueWire, blueLocation, [&]() { visited.emplace(blueLocation); });
 
         std::vector<int> intersects;
         Vec redLocation;
-
         walk(redWire, redLocation, [&]() {
             if (visited.find(redLocation) != visited.cend()) {
                 intersects.push_back(std::abs(redLocation.x) +
@@ -75,9 +73,31 @@ namespace aoc2019 {
         auto blueWire = aoc::string::split(input[0], ',');
         auto redWire = aoc::string::split(input[1], ',');
 
-        std::vector<int> intersects = {1};
+        std::unordered_map<Vec, int, aoc::maths::Vector2Hash<int>> visited;
 
-        aoc::output(doPrint, 2019, 3, 2,
-                    *std::min_element(intersects.cbegin(), intersects.cend()));
+        visited.emplace(Vec{0, 0}, 0);
+
+    
+        Vec blueLocation;
+        int blueDistance = 0;
+        walk(blueWire, blueLocation, [&]() 
+        { 
+            blueDistance++;
+            visited.emplace(blueLocation, blueDistance); 
+        });
+        
+
+        std::vector<int> intersects;
+        Vec redLocation;
+        int redDistance = 0;
+        walk(redWire, redLocation, [&]() {
+            redDistance++;
+            if (visited.find(redLocation) != visited.cend()) {
+                intersects.push_back(redDistance + visited.at(redLocation));
+            }
+        });
+
+       aoc::output(doPrint, 2019, 3, 2,
+                   *std::min_element(intersects.cbegin(), intersects.cend()));
     }
 } // namespace aoc2019
