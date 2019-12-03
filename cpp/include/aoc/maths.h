@@ -19,11 +19,38 @@ namespace aoc::maths
         return left.x == right.x && left.y == right.y;
     }
 
+    template<typename T>
+    Vector2<T> operator+(const Vector2<T> left, const Vector2<T> right)
+    {
+        return {
+            left.x + right.x,
+            left.y + left.y
+        };
+    }
+
+    template<typename T>
+    Vector2<T> operator-(const Vector2<T> left, const Vector2<T> right)
+    {
+        return {
+            left.x - right.x,
+            left.y - left.y
+        };
+    }
+
+    template<typename T>
+    Vector2<T> operator*(const Vector2<T> left, T scalar)
+    {
+        return {
+            left.x * scalar,
+            left.y * scalar
+        };
+    }
+    
     template<typename T>    
     struct Vector2Hash {
         std::size_t operator()(const Vector2<T>& k) const
         {
-            return (k.x << (sizeof(T) * 8)) | k.y;
+            return (k.x * 130199) ^ (k.x * 146437);
         }
     };
 

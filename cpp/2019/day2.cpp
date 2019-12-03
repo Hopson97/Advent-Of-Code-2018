@@ -10,7 +10,7 @@
 namespace {
     const char *INPUT_PATH = "2019/inputs/day2.txt";
 
-    void run(std::vector<int>& ops)
+    void run(std::vector<int> &ops)
     {
         for (int i = 0; i < (int)ops.size(); i += 4) {
             auto op = ops[i];
@@ -38,7 +38,8 @@ namespace {
         auto input = aoc::file_io::readAsLine(INPUT_PATH);
         auto opstrings = aoc::string::split(input, ',');
         std::vector<int> ops;
-        std::transform(opstrings.begin(), opstrings.end(), std::back_inserter(ops),
+        std::transform(opstrings.begin(), opstrings.end(),
+                       std::back_inserter(ops),
                        [](auto a) { return std::stoi(a); });
         return ops;
     }
