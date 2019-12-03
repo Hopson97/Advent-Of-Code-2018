@@ -2,7 +2,6 @@
 #include <aoc/file_io.h>
 #include <aoc/maths.h>
 #include <aoc/string.h>
-#include <thread>
 
 /*
     Solution for Advent of Code 2019 day 3
