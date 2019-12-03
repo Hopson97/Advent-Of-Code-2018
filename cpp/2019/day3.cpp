@@ -52,10 +52,10 @@ namespace aoc2019 {
         std::vector<int> intersects;
         aoc::maths::VectorSet<int> visited;
         visited.emplace(Vec{0, 0});
-    
 
-        walk(blueWire, [&](const Vec& blueLocation) { visited.emplace(blueLocation); });
-        walk(redWire, [&](const Vec& redLocation) {
+        walk(blueWire,
+             [&](const Vec &blueLocation) { visited.emplace(blueLocation); });
+        walk(redWire, [&](const Vec &redLocation) {
             if (visited.find(redLocation) != visited.cend()) {
                 intersects.push_back(std::abs(redLocation.x) +
                                      std::abs(redLocation.y));
@@ -74,24 +74,23 @@ namespace aoc2019 {
 
         std::unordered_map<Vec, int, aoc::maths::Vector2Hash<int>> visited;
         visited.emplace(Vec{0, 0}, 0);
-    
+
         int blueDistance = 0;
-        walk(blueWire, [&](const Vec& blueLocation) 
-        { 
+        walk(blueWire, [&](const Vec &blueLocation) {
             blueDistance++;
-            visited.emplace(blueLocation, blueDistance); 
+            visited.emplace(blueLocation, blueDistance);
         });
-        
+
         std::vector<int> intersects;
         int redDistance = 0;
-        walk(redWire, [&](const Vec& redLocation) {
+        walk(redWire, [&](const Vec &redLocation) {
             redDistance++;
             if (visited.find(redLocation) != visited.cend()) {
                 intersects.push_back(redDistance + visited.at(redLocation));
             }
         });
 
-       aoc::output(doPrint, 2019, 3, 2,
-                   *std::min_element(intersects.cbegin(), intersects.cend()));
+        aoc::output(doPrint, 2019, 3, 2,
+                    *std::min_element(intersects.cbegin(), intersects.cend()));
     }
 } // namespace aoc2019
