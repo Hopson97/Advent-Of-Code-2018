@@ -74,9 +74,7 @@ namespace aoc2019 {
         auto redWire = aoc::string::split(input[1], ',');
 
         std::unordered_map<Vec, int, aoc::maths::Vector2Hash<int>> visited;
-
         visited.emplace(Vec{0, 0}, 0);
-
     
         Vec blueLocation;
         int blueDistance = 0;
@@ -86,7 +84,6 @@ namespace aoc2019 {
             visited.emplace(blueLocation, blueDistance); 
         });
         
-
         std::vector<int> intersects;
         Vec redLocation;
         int redDistance = 0;
