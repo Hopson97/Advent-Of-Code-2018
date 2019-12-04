@@ -14,64 +14,26 @@ namespace {
         return c - '0';
     }
 
-    bool meetsCriteria(int password)
+    template <typename F>
+    bool meetsCriteria(int password, F crit)
     {
         auto str = std::to_string(password);
-
-        bool hasAdjacent = false;
+        std::array<int, 10> adj{0};
         int maxValue = toi(str[0]);
-        int previous = maxValue;
-        str.erase(str.begin());
         for (auto n : str) {
             int i = toi(n);
             if (i < maxValue) {
                 return false;
             }
             maxValue = i;
-
-            if (i == previous) {
-                hasAdjacent = true;
-            }
-            previous = i;
-        }
-
-        if (hasAdjacent) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    bool meetsMoreCriteria(int password)
-    {
-        auto str = std::to_string(password);
-
-        std::array<int, 10> adj;
-
-        int maxValue = toi(str[0]);
-        int previous = maxValue;
-        str.erase(str.begin());
-        for (auto n : str) {
-            int i = toi(n);
-            if (i < maxValue) {
-                return false;
-            }
-            maxValue = i;
-
-            if (i == previous) {
-                adj[i]++;
-            }
-
-            previous = i;
+            adj[i]++;
         }
 
         for (auto i : adj) {
-            if (i == 2) {
+            if (crit(i)) {
                 return true;
             }
         }
-
         return false;
     }
 } // namespace
@@ -81,7 +43,9 @@ namespace aoc2019 {
     {
         int count = 0;
         for (int i = LEFT; i <= RIGHT; i++) {
-            if (meetsCriteria(i)) {
+            if (meetsCriteria(i, [](int i) {
+                return i >= 2;
+            })) {
                 count++;
             }
         }
@@ -92,15 +56,12 @@ namespace aoc2019 {
     {
         int count = 0;
         for (int i = LEFT; i <= RIGHT; i++) {
-            if (meetsMoreCriteria(i)) {
+            if (meetsCriteria(i, [](int i) {
+                return i == 2;
+            })) {
                 count++;
             }
         }
-
-        std::cout << meetsMoreCriteria(111122) << std::endl;
-        std::cout << meetsMoreCriteria(112233) << std::endl;
-        std::cout << meetsMoreCriteria(123444) << std::endl;
-
         aoc::output(doPrint, 2019, 4, 2, count);
     }
 } // namespace aoc2019
