@@ -3,7 +3,7 @@
 
 int main()
 {
-    // benchmark<1>(2019, 3, aoc2019::day4PartOne, aoc2019::day4PartTwo);
+    benchmark<1000>(2019, 3, aoc2019::day4PartOne, aoc2019::day4PartTwo);
 
     aoc2019::day4PartOne();
     aoc2019::day4PartTwo();
