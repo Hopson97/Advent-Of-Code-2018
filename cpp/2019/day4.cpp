@@ -1,5 +1,5 @@
 #include "aoc2019.h"
-
+#include <charconv>
 /*
     Solution for Advent of Code 2019 day 4
     https://adventofcode.com/2019/day/4
@@ -17,7 +17,8 @@ namespace {
     template <typename F>
     bool meetsCriteria(int password, F crit)
     {
-        auto str = std::to_string(password);
+        std::array<char, 6> str;
+        std::to_chars(str.begin(), str.end(), password);
         std::array<int, 10> adj{0};
         int maxValue = toi(str[0]);
         for (auto n : str) {
