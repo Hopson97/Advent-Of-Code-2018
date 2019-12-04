@@ -22,10 +22,6 @@ class Benchmark {
             UnitType total = 0;
             std::array<UnitType, N> times;
 
-            std::cout << "___________________________________________\n";
-            std::cout << "| Progress                                |\n";
-            std::cout << "| 0%                                 100% |\n";
-            std::cout << "| ";
             for (int i = 0; i < N; i++) {
                 auto begin = Clock::now();
                 function();
@@ -34,12 +30,7 @@ class Benchmark {
                 auto ms = std::chrono::duration_cast<TimeUnit>(time);
                 total += ms.count();
                 times[i] = ms.count();
-                if (i % 5 == 0) {
-                    //std::cout << "= ";
-                    //std::cout.flush();
-                }
             }
-            std::cout << "|\n" << std::endl;
             m_totalTime = total;
             m_avgTime   = (float(total) / float(N));
             m_minTime   = (*std::min_element(times.cbegin(), times.cend()));
@@ -54,9 +45,9 @@ class Benchmark {
                 "Times benchmarked: "      << N                     << "\n\n"<<
                 "  Total time: "           << m_totalTime           << " microseconds\n"<<
                 "  Total time: "           << m_totalTime / 1000000 << " seconds\n"<<
-                "Average time: "           << m_avgTime / 1000.0    << " microseconds\n"<<
-                "Minimum time: "           << m_minTime / 1000.0    << " microseconds\n"<<
-                "Maximum time: "           << m_maxTime / 1000.0    << " microseconds\n"<<
+                "Average time: "           << m_avgTime / 1000.0    << " milliseconds\n"<<
+                "Minimum time: "           << m_minTime / 1000.0    << " milliseconds\n"<<
+                "Maximum time: "           << m_maxTime / 1000.0    << " milliseconds\n"<<
                 "       Range: "           << (m_maxTime - m_minTime) / 1000.0 << " microseconds" << std::endl;
         }
     private:
