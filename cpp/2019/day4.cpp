@@ -43,9 +43,7 @@ namespace aoc2019 {
     {
         int count = 0;
         for (int i = LEFT; i <= RIGHT; i++) {
-            if (meetsCriteria(i, [](int i) {
-                return i >= 2;
-            })) {
+            if (meetsCriteria(i, [](int i) { return i >= 2; })) {
                 count++;
             }
         }
@@ -56,9 +54,7 @@ namespace aoc2019 {
     {
         int count = 0;
         for (int i = LEFT; i <= RIGHT; i++) {
-            if (meetsCriteria(i, [](int i) {
-                return i == 2;
-            })) {
+            if (meetsCriteria(i, [](int i) { return i == 2; })) {
                 count++;
             }
         }
