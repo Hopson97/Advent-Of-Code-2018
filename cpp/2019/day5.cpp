@@ -27,39 +27,40 @@ namespace {
 
                 paramMode2 = buff[0] - '0';
                 paramMode1 = buff[1] - '0';
-                op = buff[3];
+                op = buff[3] - '0';
             }
+            std::cout << op << " " << i << std::endl;
             switch (op) {
-                case 1:
+                case 1:{
                     int address = ops[i + 3];
                     int p1 = paramMode1 == 0 ? ops[ops[i + 1]] : ops[i + 1];
-                    int p2 = paramMode2 == 1 ? ops[ops[i + 2]] : ops[i + 2];
+                    int p2 = paramMode2 == 0 ? ops[ops[i + 2]] : ops[i + 2];
                     ops[address] = p1 + p2;
-                    break;
+                }break;
 
-                case 2:
+                case 2:{
                     int address = ops[i + 3];
                     int p1 = paramMode1 == 0 ? ops[ops[i + 1]] : ops[i + 1];
-                    int p2 = paramMode2 == 1 ? ops[ops[i + 2]] : ops[i + 2];
+                    int p2 = paramMode2 == 0 ? ops[ops[i + 2]] : ops[i + 2];
                     ops[address] = p1 * p2;
                     i += 4;
-                    break;
+                }break;
 
-                case 3:
+                case 3:{
                     ops[ops[i + 1]] = 1;
-                    i += 1;
-                    break;
+                    i += 2;
+                }break;
 
-                case 4:
+                case 4:{
                     std::cout << ops[ops[i + 1]] << '\n';
-                    i += 1;
-                    break;
+                    i += 2;
+                }break;
 
                 case 99:
                     return;
 
                 default:
-                    std::cout << "ERROR" << op << std::endl;
+                    std::cout << "ERROR " << op << std::endl;
                     exit(-1);
             }
         }
@@ -82,6 +83,10 @@ namespace aoc2019 {
     {
         auto ops = getOps();
         run(ops);
+
+        for (auto op : ops) {
+            std::cout << op << std::endl;
+        }
 
         aoc::output(doPrint, 2019, 5, 1, "None");
     }
