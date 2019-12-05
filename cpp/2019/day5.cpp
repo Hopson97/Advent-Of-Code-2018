@@ -88,7 +88,7 @@ namespace {
                 } break;
 
                 case 7: {
-                    int address = ops[i + 1];
+                    int address = ops[i + 3];
                     int p1 = paramMode1 == 0 ? ops[ops[i + 1]] : ops[i + 1];
                     int p2 = paramMode2 == 0 ? ops[ops[i + 2]] : ops[i + 2];
                     if (p1 < p2) {
@@ -101,7 +101,7 @@ namespace {
                 } break;
 
                 case 8: {
-                    int address = ops[i + 1];
+                    int address = ops[i + 3];
                     int p1 = paramMode1 == 0 ? ops[ops[i + 1]] : ops[i + 1];
                     int p2 = paramMode2 == 0 ? ops[ops[i + 2]] : ops[i + 2];
                     if (p1 == p2) {
@@ -148,7 +148,7 @@ namespace aoc2019 {
     void day5PartTwo(bool doPrint)
     {
         auto ops = getOps();
-        run(ops, 9);
+        run(ops, 5);
         std::cout << "\n\n";
 
         aoc::output(doPrint, 2019, 5, 1, "None");
