@@ -8,25 +8,42 @@
 
 namespace {
     const char *INPUT_PATH = "2019/inputs/day6.txt";
+
+    int toInt(const std::string& s) {
+        u8 a = s[0] - '0';
+        u8 b = s[1] - '0';
+        u8 c = s[2] - '0';
+
+        return a | (b << 8) | c << 16;
+    }
+
+    auto findDirectOrbits()
+    {
+        auto in = aoc::file_io::readAsLines(INPUT_PATH);
+
+        std::unordered_map<int, int> directOrbits;
+
+        for (auto &line : in) {
+            auto l = aoc::string::split(line, ')');
+            directOrbits[toInt(l[1])] = toInt(l[0]);
+        }
+
+        return directOrbits;
+    }
 } // namespace
 
 namespace aoc2019 {
     void day6PartOne(bool doPrint)
     {
-        auto in = aoc::file_io::readAsLines(INPUT_PATH);
-
-        std::unordered_map<std::string, std::string> directOrbits;
-
-        for (auto &line : in) {
-            auto l = aoc::string::split(line, ')');
-            directOrbits[l[1]] = l[0];
-        }
+        auto directOrbits = findDirectOrbits();
         int count = directOrbits.size();
 
+        int COM = toInt("COM");
+
         for (auto &orbit : directOrbits) {
-            std::string planet = orbit.first;
-            std::string orbits = orbit.second;
-            while (orbits != "COM") {
+            auto planet = orbit.first;
+            auto orbits = orbit.second;
+            while (orbits != COM) {
                 planet = orbits;
                 orbits = directOrbits[planet];
                 count++;
@@ -38,33 +55,29 @@ namespace aoc2019 {
 
     void day6PartTwo(bool doPrint)
     {
-        auto in = aoc::file_io::readAsLines(INPUT_PATH);
+        auto directOrbits = findDirectOrbits();
 
-        std::unordered_map<std::string, std::string> directOrbits;
-
-        for (auto &line : in) {
-            auto l = aoc::string::split(line, ')');
-            directOrbits[l[1]] = l[0];
-        }
-
-        std::unordered_map<std::string, int> sanOrbits;
+        int COM = toInt("COM");
+        std::unordered_map<int, int> sanOrbits;
         {
+            int SAN = toInt("SAN");
             int count = 0;
-            std::string planet = "SAN";
-            std::string orbits = directOrbits["SAN"];
-            while (orbits != "COM") {
+            int planet = SAN;
+            int orbits = directOrbits[SAN];
+            while (orbits != COM) {
                 sanOrbits.emplace(orbits, count++);
                 planet = orbits;
                 orbits = directOrbits[planet];
             }
         }
 
-        std::unordered_map<std::string, int> youOrbits;
+        std::unordered_map<int, int> youOrbits;
         {
+            int YOU = toInt("YOU");
             int count = 0;
-            std::string planet = "YOU";
-            std::string orbits = directOrbits["YOU"];
-            while (orbits != "COM") {
+            int planet = YOU;
+            int orbits = directOrbits[YOU];
+            while (orbits != COM) {
                 youOrbits.emplace(orbits, count++ );
                 planet = orbits;
                 orbits = directOrbits[planet];
@@ -76,11 +89,10 @@ namespace aoc2019 {
         {
             if (youOrbits.find(hop.first) != youOrbits.end()) {
                 hops.push_back(hop.second + youOrbits[hop.first]);
-                std::cout << "Hops to get to: " << hop.first << " - San: " << hop.second << " You: " <<  youOrbits[hop.first] << " OT: " << hops.back() << std::endl;
             }
         }
 
-
+        toInt("TES");
         aoc::output(doPrint, 2019, 6, 2, *std::min_element(hops.cbegin(), hops.cend()));
     }
 } // namespace aoc2019
