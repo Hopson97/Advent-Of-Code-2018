@@ -62,12 +62,10 @@ namespace aoc2019 {
         {
             int SAN = toInt("SAN");
             int count = 0;
-            int planet = SAN;
             int orbits = directOrbits[SAN];
             while (orbits != COM) {
                 sanOrbits.emplace(orbits, count++);
-                planet = orbits;
-                orbits = directOrbits[planet];
+                orbits = directOrbits[orbits];
             }
         }
 
@@ -75,12 +73,10 @@ namespace aoc2019 {
         {
             int YOU = toInt("YOU");
             int count = 0;
-            int planet = YOU;
             int orbits = directOrbits[YOU];
             while (orbits != COM) {
                 youOrbits.emplace(orbits, count++ );
-                planet = orbits;
-                orbits = directOrbits[planet];
+                orbits = directOrbits[orbits];
             }
         }
 
