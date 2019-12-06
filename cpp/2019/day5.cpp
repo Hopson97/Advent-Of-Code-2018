@@ -35,7 +35,9 @@ namespace {
                 paramMode1 = buff[0] - '0';
                 op = buff[2] - '0';
             }
-             std::cout << "Position: " << i << " Opcode: " << op << " ParamModes: " << paramMode1 << ' ' << paramMode2 << '\n';
+            std::cout << "Position: " << i << " Opcode: " << op
+                      << " ParamModes: " << paramMode1 << ' ' << paramMode2
+                      << '\n';
             // std::this_thread::sleep_for(std::chrono::milliseconds(500));
             switch (op) {
                 case 1: {
