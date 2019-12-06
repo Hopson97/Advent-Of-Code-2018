@@ -60,9 +60,8 @@ namespace aoc2019 {
         int COM = toInt("COM");
         std::unordered_map<int, int> sanOrbits;
         {
-            int SAN = toInt("SAN");
             int count = 0;
-            int orbits = directOrbits[SAN];
+            int orbits = directOrbits[ toInt("SAN")];
             while (orbits != COM) {
                 sanOrbits.emplace(orbits, count++);
                 orbits = directOrbits[orbits];
@@ -71,9 +70,8 @@ namespace aoc2019 {
 
         std::unordered_map<int, int> youOrbits;
         {
-            int YOU = toInt("YOU");
             int count = 0;
-            int orbits = directOrbits[YOU];
+            int orbits = directOrbits[toInt("YOU")];
             while (orbits != COM) {
                 youOrbits.emplace(orbits, count++ );
                 orbits = directOrbits[orbits];
@@ -88,7 +86,6 @@ namespace aoc2019 {
             }
         }
 
-        toInt("TES");
         aoc::output(doPrint, 2019, 6, 2, *std::min_element(hops.cbegin(), hops.cend()));
     }
 } // namespace aoc2019
