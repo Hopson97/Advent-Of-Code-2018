@@ -9,7 +9,8 @@
 namespace {
     const char *INPUT_PATH = "2019/inputs/day6.txt";
 
-    int toInt(const std::string& s) {
+    int toInt(const std::string &s)
+    {
         u8 a = s[0] - '0';
         u8 b = s[1] - '0';
         u8 c = s[2] - '0';
@@ -61,7 +62,7 @@ namespace aoc2019 {
         std::unordered_map<int, int> sanOrbits;
         {
             int count = 0;
-            int orbits = directOrbits[ toInt("SAN")];
+            int orbits = directOrbits[toInt("SAN")];
             while (orbits != COM) {
                 sanOrbits.emplace(orbits, count++);
                 orbits = directOrbits[orbits];
@@ -73,19 +74,19 @@ namespace aoc2019 {
             int count = 0;
             int orbits = directOrbits[toInt("YOU")];
             while (orbits != COM) {
-                youOrbits.emplace(orbits, count++ );
+                youOrbits.emplace(orbits, count++);
                 orbits = directOrbits[orbits];
             }
         }
 
         std::vector<int> hops;
-        for (auto& hop : sanOrbits)
-        {
+        for (auto &hop : sanOrbits) {
             if (youOrbits.find(hop.first) != youOrbits.end()) {
                 hops.push_back(hop.second + youOrbits[hop.first]);
             }
         }
 
-        aoc::output(doPrint, 2019, 6, 2, *std::min_element(hops.cbegin(), hops.cend()));
+        aoc::output(doPrint, 2019, 6, 2,
+                    *std::min_element(hops.cbegin(), hops.cend()));
     }
 } // namespace aoc2019
