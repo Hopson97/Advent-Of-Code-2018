@@ -11,7 +11,7 @@
 namespace {
     const char *INPUT_PATH = "2019/inputs/day7.txt";
 
-    std::string run(std::vector<int> &ops, std::list<int> input)
+    int run(std::vector<int> ops, std::list<int> input)
     {
         std::string output;
         for (int i = 0;;) {
@@ -112,14 +112,14 @@ namespace {
                 } break;
 
                 case 99:
-                    return output;
+                    return std::stoi(output);
 
                 default:
                     std::cout << "ERROR " << op << std::endl;
                     exit(-1);
             }
         }
-        return output;
+        return std::stoi(output);
     }
 
     auto getOps()
@@ -132,47 +132,36 @@ namespace {
                        [](auto a) { return std::stoi(a); });
         return ops;
     }
-
-    int runSequence(std::vector<int> input, std::vector<int> sequence)
-    {
-        std::string out;
-        int output = 0;
-        for(auto amp : sequence) {
-            auto op = input;
-            out = run(op, {amp, output});
-            output = std::stoi(out);
-        }
-
-        return std::stoi(out);
-    }
 } // namespace
 
 namespace aoc2019 {
     void day7PartOne(bool doPrint)
     {
-    
         auto input = getOps();
-        
-        std::vector<int> output;
-        for (int a = 0; a <= 4; a++) {
-            for (int b = 0; b <= 4; b++) {
-                for (int c = 0; c <= 4; c++) {
-                    for (int d = 0; d <= 4; d++) {
-                        for (int e = 0; e <= 4; e++) {
-                            auto in = input;
-                            output.push_back(runSequence(in, {a, b, c, d, e}));
-                        }
-                    }
-                }
+        std::vector<int> phase{0, 1, 2, 3, 4};
+        int maxOutput = 0;
+        while(std::next_permutation(phase.begin(), phase.end())) {
+            int output = 0;
+            for (auto in : phase) {
+                output = run(input, {in, output});
+                maxOutput = std::max(maxOutput, output);
             }
         }
-
-        aoc::output(doPrint, 2019, 7, 1, *std::max_element(output.cbegin(), output.cend()));
+        aoc::output(doPrint, 2019, 7, 1, maxOutput);
     }
 
     void day7PartTwo(bool doPrint)
     {
-        std::ifstream inFile(INPUT_PATH);
+        auto input = getOps();
+        std::vector<int> phase{5, 6, 7, 8, 9};
+        int maxOutput = 0;
+        while(std::next_permutation(phase.begin(), phase.end())) {
+            int output = 0;
+            for (auto in : phase) {
+                output = run(input, {in, output});
+                maxOutput = std::max(maxOutput, output);
+            }
+        }
         aoc::output(doPrint, 2019, 7, 2, "None");
     }
 } // namespace aoc2019
