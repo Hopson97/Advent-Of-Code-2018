@@ -5,6 +5,6 @@ int main()
 {
     // benchmark<1000>(2019, 3, aoc2019::day6PartOne, aoc2019::day6PartTwo);
 
-    aoc2019::day7PartOne();
-    aoc2019::day7PartTwo();
+    aoc2019::day8PartOne();
+    aoc2019::day8PartTwo();
 }
