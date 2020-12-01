@@ -2,32 +2,25 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"strconv"
 )
 
-func find2020SumProduct(expenses []string) int {
+func find2020SumProduct(expenses []int) int {
 	for _, j := range expenses {
 		for _, i := range expenses {
-			a, _ := strconv.Atoi(j)
-			b, _ := strconv.Atoi(i)
-			if a+b == 2020 {
-				return a * b
+			if i+j == 2020 {
+				return i * j
 			}
 		}
 	}
 	return 0
 }
 
-func find2020TripleSumProduct(expenses []string) int {
+func find2020TripleSumProduct(expenses []int) int {
 	for _, j := range expenses {
 		for _, i := range expenses {
 			for _, k := range expenses {
-				a, _ := strconv.Atoi(j)
-				b, _ := strconv.Atoi(i)
-				c, _ := strconv.Atoi(k)
-				if a+b+c == 2020 {
-					return a * b * c
+				if i+j+k == 2020 {
+					return i * j * k
 				}
 			}
 		}
@@ -36,13 +29,7 @@ func find2020TripleSumProduct(expenses []string) int {
 }
 
 func main() {
-	//Input
-	buff, err := ioutil.ReadFile("input/day1.txt")
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	expenses := split(string(buff))
+	expenses := readFileLinesToIntList("input/day1.txt")
 
 	// Part 1
 	fmt.Println(find2020SumProduct(expenses))
