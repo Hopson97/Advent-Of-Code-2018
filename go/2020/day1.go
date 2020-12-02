@@ -32,7 +32,7 @@ func find2020TripleSumProduct(expenses []int) int {
 	return 0
 }
 
-func main() {
+func dayOne() {
 	expenses := readFileLinesToIntList("input/day1.txt")
 
 	// Part 1
