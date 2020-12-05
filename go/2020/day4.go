@@ -1,6 +1,6 @@
 /*
 	Day 2
-	https://adventofcode.com/2020/day/3
+	https://adventofcode.com/2020/day/4
 */
 package main
 
@@ -15,9 +15,8 @@ func checkDigitRange(str string, min int, max int) bool {
 	if err != nil {
 		fmt.Println(err)
 		return false
-	} else {
-		return val >= min && val <= max
 	}
+	return val >= min && val <= max
 }
 
 func dayFour() {
