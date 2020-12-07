@@ -21,7 +21,6 @@ func count(kind string) int {
 			if buff != kind {
 				if _, ok := cache[buff]; !ok {
 					cache[buff] = true
-					fmt.Println(desc)
 					sum += count(buff)
 					sum++
 				}
@@ -34,7 +33,6 @@ func count(kind string) int {
 
 func day7() {
 	descs = readFileLines("input/day7.txt")
-
 	fmt.Println(count("shiny gold"))
 	fmt.Println()
 }
