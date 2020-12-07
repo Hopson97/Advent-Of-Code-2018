@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// easier than working out how multi-dimensional slices work tbh
 type group struct {
 	answers []string
 }

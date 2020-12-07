@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func day14 {
+func day14() {
 	answers := readFileToString("input/day14.txt")
 	fmt.Println()
 	fmt.Println()

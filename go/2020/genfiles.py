@@ -1,4 +1,4 @@
-min = 7
+min = 8
 max = 26
 
 for i in range(min, max, 1):
@@ -16,7 +16,7 @@ import (\n\
 	"strings"\n\
 )\n\
 \n\
-func day' + i + ' {\n\
+func day' + i + '() {\n\
 	answers := readFileToString("input/day' + i + '.txt")\n\
 	fmt.Println()\n\
 	fmt.Println()\n\
