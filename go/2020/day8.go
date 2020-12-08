@@ -13,6 +13,11 @@ const (
 	InstructionJmp = 2
 )
 
+const (
+	ExitHistoryRepeat = 0
+	ExitSuccess = 1
+)
+
 type instruction struct {
 	op  string
 	arg int
@@ -49,13 +54,25 @@ func newGameConsole(code []string) *gameconsole {
 	return &console
 }
 
-func (c *gameconsole) run() {
+func (c* gameconsole) reset() {
+	c.ip = 0
+	c.acc = 0
+	c.history = make(map[int]bool)
+}
+
+func (c *gameconsole) run() int {
+	status := 0
 	for true {
+		if c.ip >= len(c.program) {
+			status = ExitSuccess
+			break
+		}
 		if _, ok := c.history[c.ip]; ok {
-			fmt.Println(c.acc)
+			status = ExitHistoryRepeat
 			break
 		}
 		c.history[c.ip] = true
+		
 
 		inst := c.program[c.ip]
 		switch inst.op {
@@ -69,6 +86,7 @@ func (c *gameconsole) run() {
 			c.opNop(inst)
 		}
 	}
+	return status
 }
 
 func (c *gameconsole) opNop(inst instruction) {
@@ -88,9 +106,30 @@ func day8() {
 	code := readFileLines("input/day8.txt")
 	console := newGameConsole(code)
 	console.run()
+	fmt.Println(console.acc)
+	console.reset()
 
+	orig := make([]instruction, len(console.program))
+	copy(orig, console.program)
+
+	tryme := false
+	for i := range console.program {
+		if console.program[i].op == "jmp" {
+			console.program[i].op = "nop"
+			tryme = true
+		} else if console.program[i].op == "nop" { 
+			console.program[i].op = "jmp"
+			tryme = true
+		}
+		if tryme {
+			tryme = false
+			if console.run() == ExitSuccess {
+				fmt.Println(console.acc)
+				break
+			} else {
+				copy(console.program, orig)
+				console.reset()
+			}
+		}
+	}
 }
-
-/*
-
- */
